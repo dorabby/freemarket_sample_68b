@@ -20,6 +20,8 @@
 
 
 ## cardsテーブル
+|Column|Type|Options|
+|------|----|-------|
 |card_number|integer|null:false|
 |token|integer|null:false|
 |expiration_date_year|integer|null:false|
@@ -32,6 +34,8 @@
 
 
 ## itemsテーブル
+|Column|Type|Options|
+|------|----|-------|
 |name|string|null:false|
 |description|string|null:false|
 |condition|string|null:false|
@@ -59,8 +63,10 @@
 
 
 ## categoryテーブル
+|Column|Type|Options|
+|------|----|-------|
 |name|string|null:false|
-|category_id|integer|null: false,foreign_key: true|
+|item_id|integer|null: false,foreign_key: true|
 |ancestry|gem|
 
 ## Association
@@ -87,6 +93,8 @@
 
 
 ## user_imagesテーブル
+|Column|Type|Options|
+|------|----|-------|
 |image_url|text|null:false|
 |user_id|integer|null: false,foreign_key: true|
 
@@ -96,6 +104,8 @@
 
 
 ## addressesテーブル
+|Column|Type|Options|
+|------|----|-------|
 |family_name|string|null:false|
 |name|string|null:false|
 |family_name-furigana|string|null:false|
@@ -113,16 +123,17 @@
 
 
 ## commentsテーブル
+|Column|Type|Options|
+|------|----|-------|
 |comment|string|null:false|
 
 ## Association
 - belong_to :item
 
 
-
-<!-- 追加？ -->
 ## snsテーブル
+|Column|Type|Options|
+|------|----|-------|
 |uid|----|-------|
 |provider|----|-------|
-|------|----|-------|
 ## Association
