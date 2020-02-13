@@ -47,7 +47,7 @@
 |saler_id|integer||
 |user_id|integer|null: false,foreign_key: true|
 |item_images_id|integer|null: false,foreign_key: true|
-|category_1_id|integer|null: false,foreign_key: true|
+|category_id|integer|null: false,foreign_key: true|
 |brand_id|integer||
 
 ## Association
@@ -77,6 +77,8 @@
 
 
 ## brandテーブル
+|Column|Type|Options|
+|------|----|-------|
 |name|string|null:false|
 
 ## Association
@@ -85,6 +87,8 @@
 
 
 ## item_imagesテーブル
+|Column|Type|Options|
+|------|----|-------|
 |image_url|text|null:false|
 
 ## Association
