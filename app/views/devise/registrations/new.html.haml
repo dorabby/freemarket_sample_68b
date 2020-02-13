@@ -1,0 +1,45 @@
+#account-page.account-page
+  .account-page__inner.clearfix
+    .account-page__inner--left.account-page__header
+      %h2 会員情報の入力
+      = render "devise/shared/links"
+    .account-page__inner--right.user-form
+      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        = devise_error_messages!
+        .field
+          .field-label
+            = f.label :nick_name, "ニックネーム"
+          .field-input
+            = f.text_field :name, autofocus: true, placeholder: "例） タロウ"
+        .field
+          .field-label
+            = f.label :email, "メールアドレス"
+          .field-input
+            = f.email_field :email, placeholder: "PC・携帯どちらでも可"
+        .field
+          .field-label
+            = f.label :password, "パスワード"
+          .field-input
+            = f.password_field :password, autocomplete: "off", placeholder: "英数字8文字以上"
+        .field
+          .field-label
+            = f.label :password_confirmation, "パスワード確認"
+          .field-input
+            = f.password_field :password_confirmation, autocomplete: "off"
+        %h4 本人確認
+
+        .field
+          .field-label
+            = f.label :family_name, "お名前（全角）"
+          .field-input
+            = f.email_field :family_name, placeholder: "例） 山田"
+            = f.email_field :name, placeholder: "例） 太郎"
+
+        .field
+          .field-label
+            = = f.label :family_name_furigana, "お名前カナ（全角）"
+          .field-input
+          = f.email_field :family_name, placeholder: "例） ヤマダ"
+          = f.email_field :name, placeholder: "例） タロウ"
+        .actions
+          = f.submit "作成", class: 'btn'
