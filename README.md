@@ -7,6 +7,7 @@
 |name|string|null:false|
 |family_name-furigana|string|null:false|
 |name-furigana|string|null:false|
+|nickname|string|null:false|
 |email|string|null:false|
 |password|string|null:false|
 |birthday|integer|null:false|
