@@ -68,6 +68,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 
 # 追加分
+gem 'font-awesome-sass'
 gem 'devise'
 gem 'pry-rails'
 gem 'haml-rails'
