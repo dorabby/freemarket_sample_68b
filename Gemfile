@@ -73,7 +73,7 @@ gem 'devise'
 gem 'pry-rails'
 gem 'haml-rails'
 gem 'erb2haml'
-gem "font-awesome-rails"
+gem 'ancestry'
 
 group :production do
   gem 'unicorn', '5.4.1'
