@@ -10,7 +10,7 @@
           .field-label
             = f.label :nick_name, "ニックネーム"
           .field-input
-            = f.text_field :name, autofocus: true, placeholder: "例） タロウ"
+            = f.text_field :nick_name, autofocus: true, placeholder: "例） タロウ"
         .field
           .field-label
             = f.label :email, "メールアドレス"
@@ -25,21 +25,39 @@
           .field-label
             = f.label :password_confirmation, "パスワード確認"
           .field-input
-            = f.password_field :password_confirmation, autocomplete: "off"
+            = f.password_field :password_confirmation, autocomplete: "off", placeholder: "上記のパスワードをもう一度記述ください"
         %h4 本人確認
 
         .field
           .field-label
             = f.label :family_name, "お名前（全角）"
           .field-input
-            = f.email_field :family_name, placeholder: "例） 山田"
-            = f.email_field :name, placeholder: "例） 太郎"
+            = f.text_field :family_name, placeholder: "例） 山田"
+
+          .field-label
+            = f.label :name
+          .field-input
+            = f.text_field :name, placeholder: "例） 太郎"
 
         .field
           .field-label
-            = = f.label :family_name_furigana, "お名前カナ（全角）"
+            = f.label :family_name_furigana, "お名前カナ（全角）"
           .field-input
-          = f.email_field :family_name, placeholder: "例） ヤマダ"
-          = f.email_field :name, placeholder: "例） タロウ"
+            = f.text_field :family_name_furigana, placeholder: "例） ヤマダ"
+
+          .field-label
+            = f.label :name_furigana
+          .field-input
+            = f.text_field :name_furigana, placeholder: "例） タロウ"
+
+        .field
+          .field-label
+            = f.label :birthday, "生年月日"
+          .field-input
+            != sprintf(f.date_select(:birthday,with_css_classes:'date', prompt:"--",use_month_numbers:true, start_year:Time.now.year, end_year:1900, date_separator:'%s'),'年','月')+'日'
+
         .actions
           = f.submit "作成", class: 'btn'
+
+
+    
