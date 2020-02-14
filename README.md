@@ -27,7 +27,7 @@
 |token|integer|null:false|
 |expiration_date_year|integer|null:false|
 |expiration_date_manth|integer|null:false|
-|user_id|integer|null: false,foreign_key: true|
+|user|integer|null: false,foreign_key: true|
 
 ## Association
 - belong_to :user
@@ -46,10 +46,10 @@
 |days|integer|null:false|
 |buyer_id|integer||
 |saler_id|integer||
-|user_id|integer|null: false,foreign_key: true|
-|item_images_id|integer|null: false,foreign_key: true|
-|category_id|integer|null: false,foreign_key: true|
-|brand_id|integer||
+|user|integer|null: false,foreign_key: true|
+|item_images|integer|null: false,foreign_key: true|
+|category|integer|null: false,foreign_key: true|
+|brand|integer|foreign_key: true|
 
 ## Association
 - belong_to :user
@@ -67,7 +67,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null:false|
-|item_id|integer|null: false,foreign_key: true|
+|item|integer|null: false,foreign_key: true|
 |ancestry|gem|
 
 ## Association
@@ -101,7 +101,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |image_url|text|null:false|
-|user_id|integer|null: false,foreign_key: true|
+|user|integer|null: false,foreign_key: true|
 
 ## Association
 - belong_to :user
@@ -142,5 +142,3 @@
 |uid|----|-------|
 |provider|----|-------|
 ## Association
-
-* test tanaka
