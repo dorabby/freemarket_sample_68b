@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2020_02_14_073222) do
     t.string "name", null: false
     t.string "family_name_furigana", null: false
     t.string "name_furigana", null: false
-    t.integer "birthday", null: false
+    t.date "birthday", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
