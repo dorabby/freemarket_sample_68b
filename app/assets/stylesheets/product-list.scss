@@ -1,0 +1,128 @@
+* {
+  box-sizing: border-box;
+}
+.navivar {
+  width: 100%;
+  height: 50px;
+  border-top: 1px solid #eee;
+  box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+  position: relative;
+  padding: 0 16px;
+  font-family: "Source Sans Pro", Helvetica, Arial, "游ゴシック体", "YuGothic", "メイリオ", "Meiryo", sans-serif;
+
+  ul {
+    padding: 17px 0 16px;
+    width: 100%;
+    max-width: 1040px;
+    font-size: 14px;
+    margin: 0 auto;
+    list-style: none;
+  }
+  li {
+    padding: 0 10px 0 0;
+    float: left;
+  }
+  a {
+    text-decoration: none;
+    color: #333;
+  }
+}
+
+.main {
+  font-family: "Source Sans Pro", Helvetica, Arial, "游ゴシック体", "YuGothic", "メイリオ", "Meiryo", sans-serif;
+  background-color: #f8f8f8;
+  &__show {
+    height: 100vh;
+    padding: 40px;
+    margin: 0 auto;
+    &__content_left {
+      float: left;
+    }
+    &__content_right {
+      width: 700px;
+      margin: 0 auto;
+      &__title-box {
+        background-color: #fff;
+        border-radius: 5px;
+        h2 {
+          border-radius: 5px 5px 0 0;
+          padding: 16px 10px 8px;
+          background-color: #3CCACE;
+          color: #fff;
+          text-align: center;
+          font-weight: bold;
+          font-size: 22px;
+        }
+        ul {
+          height: 200px;
+          padding: 8px;
+          list-style: none;
+        }
+        li {
+          float: left;
+          line-height: 26px;
+          margin: 10px;
+        }
+        a {
+          text-decoration: none;
+        }
+      }
+      &__product-box {
+        margin: 30px 0;
+        text-decoration: none;
+        &__list {
+          float: left;
+          margin: 0 0 10px;
+          &__image {
+            width: 220px;
+            height: 150px;
+            position: relative;
+            overflow: hidden;
+            margin: 0;
+            z-index: auto;
+            img {
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              width: 100%;
+              z-index: auto;
+              height: 150px;
+              object-fit: cover;
+            }
+          }
+          a {
+            text-decoration: none;
+            display: inline-block;
+            margin: 0 0 20px 0;
+            position: relative;
+            background-color: #fff;
+            display: none;
+          }
+          &__image__body {
+            background-color: white;
+            color: #333;
+            padding: 16px;
+            h3 {
+              overflow: hidden;
+              line-height: 1.5;
+              font-size: 16px;
+              text-align: left
+            }
+            &__details {
+              ul {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+              }
+              li {
+                display: list-item;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
