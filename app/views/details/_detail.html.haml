@@ -1,8 +1,90 @@
-.detail_show
-  .left_content
-  .right_content
-    .top_content
-      .item_detail
-        .item_detail__name
-        .item_detail__image
-
+.main_view
+  .detail_show
+    .left_content
+    .right_content
+      .top_content
+        .item_detail
+          %h2.item_detail__item_name samplename
+          .item_detail__body
+            %ul
+              %li
+                = image_tag 'a007.png', class: 'item_detail__body__main-image'
+                %ul.item_detail__body__imagelist
+                  %li
+                    = image_tag 'a007.png', class: 'item_detail__body__sub-image'
+                  %li
+                    = image_tag 'a007.png', class: 'item_detail__body__sub-image'
+                  %li
+                    = image_tag 'a007.png', class: 'item_detail__body__sub-image'
+          .item_detail__price
+            .item_detail__price__price--money
+              %span ¥10,000
+            .item_detail__price__price--detail
+              %span （税込）
+              %span 送料込み
+          .item_detail__name--detail samplename
+          %table
+            %tbody
+              %tr
+                %th 出品者
+                %td ユーザー名を表示
+              %tr
+                %th カテゴリー
+                %td
+                  %a(href="#") 親カテゴリーを表示してリンクを飛ばす
+                  %br/
+                  %a(href="#") 子カテゴリーを表示してリンクを飛ばす
+                  %br/
+                  %a(href="#") 孫カテゴリーを表示してリンクを飛ばす
+                  %br/
+              %tr
+                %th ブランド
+                %td ブランド名を表示
+              %tr
+                %th 商品のサイズ
+                %td 商品のサイズを表示
+              %tr
+                %th 商品の状態
+                %td 商品の状態を表示
+              %tr
+                %th 配送料の負担
+                %td 出品者か購入者か表示（税込or税抜）
+              %tr
+                %th 発送元の地域
+                %td
+                  %a(href="#") 岩手県
+              %tr
+                %th 発送日の目安
+                %td 目安を表示させる
+          .option_area
+            %ul
+              %li.option_area__btn--like
+                %i.fa.fa-ster
+                お気に入り 0
+            %ul.option
+              %li.option_area__btn--bad
+                %a(href="#")
+                %i.fa.fa-flag
+                不適切な商品の通報
+        .comment_area
+          %ul.comment_contents
+          .form
+            %textarea(name="comment" cols="81" rows="8")
+            %p.note_msg
+              相手のことを考え丁寧なコメントを心がけましよう。
+              %br/
+              不快な言葉遣いなどは利用制限や退会処分となることがあります。
+            %input(type="submit")
+        %ul.pagelink
+          %li
+            %span 
+              %a(href="#") 前の商品
+          %li
+            %span 
+              %a(href="#") 後ろの商品
+        %span.see_more
+          %a(href="#")選択したカテゴリをもっと見る
+          -# = form_for do |f|
+          -#   = f.text_field :content, class: 'new_comment'
+            -# %i.fas.fa-comment
+            -#   コメントする
