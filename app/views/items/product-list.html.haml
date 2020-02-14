@@ -1,0 +1,76 @@
+= render "header"
+.navivar
+  %ul
+    %li
+      =link_to "FURIMA","#"
+    %li >
+    %li
+      =link_to "カテゴリ一覧","#"
+    %li >
+    %li
+      =link_to "レディース","#"
+    %li >
+
+
+.main
+  .main__show
+    .main__show__content_left
+    .main__show__content_right
+      .main__show__content_right__title-box
+        %h2 レディースの商品一覧
+        %ul
+          %li 
+            =link_to "トップス","#"
+          %li 
+            =link_to "ジャケット/アウター","#"
+          %li 
+            =link_to "パンツ","#"
+          %li 
+            =link_to "スカート","#"
+          %li 
+            =link_to "ワンピース","#"
+          %li 
+            =link_to "靴","#"
+          %li 
+            =link_to "ルームウェア/パジャマ","#"
+          %li 
+            =link_to "レッグウェア","#"
+          %li 
+            =link_to "帽子","#"
+          %li 
+            =link_to "バッグ","#"
+          %li 
+            =link_to "アクセサリー","#"
+          %li 
+            =link_to "ヘアアクセサリー","#"
+          %li 
+            =link_to "小物","#"
+          %li 
+            =link_to "時計","#"
+          %li 
+            =link_to "ウィッグ/エクステ","#"
+          %li 
+            =link_to "浴衣/水着","#"
+          %li 
+            =link_to "スーツ/フォーマル/ドレス","#"
+          %li 
+            =link_to "マタニティ","#"
+          %li 
+            =link_to "その他","#"
+
+      .main__show__content_right__product-box
+        .main__show__content_right__product-box__list
+          .main__show__content_right__product-box__list__image
+            = link_to "商品詳細のリンク","#"
+            = image_tag ("boushi.jpg")
+          .main__show__content_right__product-box__list__image__body
+            %h3.name 見本
+            .main__show__content_right__product-box__list__image__body__details
+              %ul
+                %li 30000円
+                %li
+                  = icon('fa','star',class: 'icon')
+                  0
+              %p (税込)
+
+= render "footer"

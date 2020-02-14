@@ -1,0 +1,133 @@
+* {
+  box-sizing: border-box;
+  font-family: "Source Sans Pro", Helvetica, Arial, "游ゴシック体", "YuGothic", "メイリオ", "Meiryo", sans-serif;
+}
+
+.wrapper{
+  display: flex;
+}
+.main_view{
+  width: 100%;
+  height: 100%;
+  background-color: #f8f8f8;
+
+  .detail_show{
+    padding: 40px;
+      .left_content{
+
+      }
+      .right_content{
+        width: 700px;
+        margin: 0 auto;
+
+        .top_content{
+
+          .item_detail{
+            background-color:white;
+            padding: 24px 40px 40px;
+            text-align: center;
+            
+            &__item_name{
+              font-weight: bold;
+              font-size: 24px;
+            }
+              &__body{
+                margin-top: 16px;
+                &__main-image{
+                  width: 560px;
+                  height: 346px;
+                  object-fit: cover;
+                }
+                &__imagelist li{
+                  display:inline-block;
+                  margin: 5px;
+                }
+                &__sub-image{
+                  width: 140px;
+                  height: 87px;
+                  object-fit: cover;
+                }
+              }
+            &__price{
+              margin: 24px 0;
+              &__price--money{
+                font-size: 46px;
+                font-weight: bold;
+                margin-right: 10px;
+              }
+              &__price--detail{
+
+              }
+            }
+            &__name--detail{
+              text-align: left;
+              margin-bottom: 30px;
+              font-size: 18px;
+              font-weight: bold;
+            }
+
+            table{
+              width: 100%;
+              height: 375px;
+              border: 1px solid #dedede;
+              margin: 0 auto;
+              font-size: 14px;
+              margin-bottom: 20px;
+            }
+
+            table th{
+              padding: 8px;
+              text-align: center;
+              border: 1px solid #dedede;
+              background-color: #EEEEEE;
+              border-collapse: collapse;
+            }
+
+            table td{
+              padding: 15px;
+              text-align: left;
+              border: 1px solid #dedede;
+              border-collapse: collapse;
+            }
+          }
+        .option_area{
+          display: flex;
+          justify-content: space-between;
+          color: #3ccace;
+        }
+
+        .comment_area{
+          width: 100%;
+          height: 280px;
+          margin: 10px 0;
+          padding: 24px;
+          background-color: white;
+          text-align: center;
+            p.note_msg{
+              background-color: #f8f8f8;
+              font-size: 14px;
+              padding: 8px;
+              margin: 10px 0;
+              text-align: left;
+            }
+        }
+
+        .pagelink{
+          display: flex;
+          justify-content: space-between;
+        }
+
+        .see_more{
+          font-size: 22px;
+          margin: 24px 0 8px;
+          font-weight: bold;
+        }
+        a{
+          text-decoration: none;
+          color: #3ccace;
+        }
+      }
+    }
+  }
+}
+
