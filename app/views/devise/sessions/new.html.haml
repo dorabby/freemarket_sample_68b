@@ -9,13 +9,13 @@
           = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) 
         .field
           .field-label
-            = f.label :email
+            = f.label :email,"メールアドレス"
           .field-input
             = f.email_field :email, autofocus: true
           .field
             .field-label
-              = f.label :password
-              %i (英数字8文字以上)
+              = f.label :password,"パスワード"
+              %i (英数字７文字以上)
             .field-input
               = f.password_field :password, autocomplete: "off"
           .actions
