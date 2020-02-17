@@ -82,9 +82,10 @@
 - has_many  :users
 - has_many  :comments
 - has_many  :likes,dependent: :destroy
+- has_many  :images, dependent: :destroy
 - belongs_to:brand
 - belongs_to:category
-- belongs_to:images, dependent: :destroy
+
 
 
 
@@ -112,7 +113,7 @@
 |item|references|null: false, foreign_key|
 
 ## Association
-- belongs_to :item
+- has_many :items
 
 
 
