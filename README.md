@@ -74,8 +74,8 @@
 |days|integer|null: false|
 |prefecture|string|null: false|
 |price|integer|null: false|
-|images|references|null: false|
-|categoryes|references|null: false|
+|image|references|null: false|
+|category|references|null: false|
 |brand|references||
 
 ## Association
@@ -96,7 +96,6 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|item|references|null: false|
 |ancestry|gem|
 
 
