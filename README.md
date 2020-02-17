@@ -3,76 +3,104 @@
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|family_name|string|null:false|
-|name|string|null:false|
-|family_name-furigana|string|null:false|
-|name-furigana|string|null:false|
-|nickname|string|null:false|
-|email|string|null:false|
-|password|string|null:false|
-|birthday|integer|null:false|
+|nickname| string |null: false|
+|first-name| string |null: false|
+|name| string |null: false|
+|first-name-furigana| string |null: false|
+|name-furigana| string |null: false|
+|email|string|null: false|
+|birthyear|integer|null: false|
+|birthmonth|integer|null: false|
+|birthday|integer|null: false|
+|password|string|null: false|
+|image|text|-------|
+|uid|integer|-------|
+|provider|integer|-------|
 
 ## Association
-- belongs_to :address
-- belongs_to :card
-- belongs_to :user_image
-- has_many :items
+- has_many  :items,dependent: :destroy
+- has_many  :comments
+- has_many  :likes,dependent: :destroy
+- has_one  :address
+- has_one  :card
+
+
+
+
+## addressesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|family_name| string |null: false|
+|name|string|null: false|
+|family_name-furigana|string|null: false|
+|name-furigana|string|null: false|
+|postalcode|integer|null: false|
+|prefecture|string|null: false|
+|municipalities|string|null: false|
+|address|string|null: false|
+|building_name|string||
+|tel|integer|null: false|
+|user|references|null: false, foreign_key|
+
+## Association
+- belongs_to :user
 
 
 
 ## cardsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|card_number|integer|null:false|
-|token|integer|null:false|
-|expiration_date_year|integer|null:false|
-|expiration_date_manth|integer|null:false|
-|user|integer|null: false,foreign_key: true|
+|card_number|integer|null: false|
+|token|integer|null: false|
+|expiration-date-year|integer|null: false|
+|expiration-date-manth|integer|null: false|
+|user|references|null: false, foreign_key|
 
 ## Association
-- belong_to :user
+- belongs_to :user
 
 
 
 ## itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null:false|
-|description|string|null:false|
-|condition|string|null:false|
-|derivery_charge|integer|null:false|
-|price|integer|null:false|
-|size|integer|null:false|
-|days|integer|null:false|
-|buyer_id|integer||
-|saler_id|integer||
-|user|integer|null: false,foreign_key: true|
-|item_images|integer|null: false,foreign_key: true|
-|category|integer|null: false,foreign_key: true|
-|brand|integer|foreign_key: true|
+|seller_id|references|null: false, foreign_key: { to_table: :users }|
+|buyer_id|references|foreign_key: { to_table: :users }|
+|name|string|null: false,index|
+|description|string|null: false|
+|condition|string|null: false|
+|size|integer|null: false|
+|derivery_chage|integer|null: false|
+|days|integer|null: false|
+|prefecture|string|null: false|
+|price|integer|null: false|
+|images|references|null: false|
+|categoryes|references|null: false|
+|brand|references||
 
 ## Association
-- belong_to :user
-- belongs_to :brand
-- has_many :categorys
-- has_many :comments
-- has_many :images
+- has_many  :users
+- has_many  :comments
+- has_many  :likes,dependent: :destroy
+- belongs_to:brand
+- belongs_to:category
+- belongs_to:images, dependent: :destroy
 
 
 
 
 
 
-## categoryテーブル
+## categoriesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null:false|
-|item|integer|null: false,foreign_key: true|
+|name|string|null: false|
+|item|references|null: false|
 |ancestry|gem|
 
+
 ## Association
-- belong_to : item
-- has_ancestry
+- has_many  :items
 
 
 
@@ -80,65 +108,41 @@
 ## brandテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null:false|
+|name|string|null: false|
+|item|references|null: false, foreign_key|
 
 ## Association
 - belongs_to :item
 
 
 
-## item_imagesテーブル
+## imagesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|image_url|text|null:false|
+|image|text|null: false|
+|item|references|null: false, foreign_key|
 
 ## Association
 - belong_to :item
-
-
-
-## user_imagesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|image_url|text|null:false|
-|user|integer|null: false,foreign_key: true|
-
-## Association
-- belong_to :user
-
-
-
-## addressesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|family_name|string|null:false|
-|name|string|null:false|
-|family_name-furigana|string|null:false|
-|name-furigana|string|null:false|
-|postalcode|string|null:false|
-|prefectures|string|null:false|
-|municipalities|string|null:false|
-|address|string|null:false|
-|building_name|string|null:false|
-|tel|integer||
-
-## Association
-- belong_to :user
 
 
 
 ## commentsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|comment|string|null:false|
+|comment|text|null:false|
+|item|references|null: false, foreign_key|
+|user|references|null: false, foreign_key|
 
 ## Association
-- belong_to :item
+- belongs_to :user
+- belongs_to :item
 
 
-## snsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|uid|----|-------|
-|provider|----|-------|
-## Association
+## likesテーブル
+|item|references|null: false, foreign_key|
+|user|references|null: false, foreign_key|
+
+## Association¥
+- belongs_to :user
+- belongs_to :item
