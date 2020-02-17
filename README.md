@@ -4,10 +4,10 @@
 |Column|Type|Options|
 |------|----|-------|
 |nickname| string |null: false|
-|first-name| string |null: false|
+|first_name| string |null: false|
 |name| string |null: false|
-|first-name-furigana| string |null: false|
-|name-furigana| string |null: false|
+|first_name_furigana| string |null: false|
+|name_furigana| string |null: false|
 |email|string|null: false|
 |birthday|integer|null: false|
 |password|string|null: false|
@@ -30,8 +30,8 @@
 |------|----|-------|
 |family_name| string |null: false|
 |name|string|null: false|
-|family_name-furigana|string|null: false|
-|name-furigana|string|null: false|
+|family_name_furigana|string|null: false|
+|name_furigana|string|null: false|
 |postalcode|integer|null: false|
 |prefecture|string|null: false|
 |municipalities|string|null: false|
@@ -50,8 +50,8 @@
 |------|----|-------|
 |card_number|integer|null: false|
 |token|integer|null: false|
-|expiration-date-year|integer|null: false|
-|expiration-date-manth|integer|null: false|
+|expiration_date_year|integer|null: false|
+|expiration_date_manth|integer|null: false|
 |user|references|null: false, foreign_key|
 
 ## Association
@@ -72,9 +72,8 @@
 |days|integer|null: false|
 |prefecture|string|null: false|
 |price|integer|null: false|
-|image|references|null: false|
-|category|references|null: false|
-|brand|references||
+|category|references|null: false, foreign_key|
+|brand|references|foreign_key|
 
 ## Association
 
