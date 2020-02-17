@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   def destroy
     user = current_user
-    user.destroy
-    redirect_to root_path
+    redirect_to new_session_path(resource_name)
   end
 end
