@@ -73,6 +73,8 @@ gem 'devise'
 gem 'pry-rails'
 gem 'haml-rails'
 gem 'erb2haml'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
 gem 'ancestry'
 gem 'font-awesome-rails'
 
