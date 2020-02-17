@@ -12,55 +12,59 @@
         .field
           .field-label
             = f.label :family_name, "お名前（全角）"
-          .field-input
+            %span 必須
+          .field-name
             = f.text_field :family_name, placeholder: "例） 山田"
             = f.text_field :name, placeholder: "例） 太郎"
 
         .field
           .field-label
             = f.label :family_name_furigana, "お名前カナ（全角）"
-          .field-input
+            %span 必須
+          .field-name
             = f.text_field :family_name_furigana, placeholder: "例） ヤマダ"
-
-          .field-label
-            = f.label :name_furigana
-          .field-input
             = f.text_field :name_furigana, placeholder: "例） タロウ"
 
         .field
-          .feild-label
+          .field-label
             = f.label :potalcode, "郵便番号"
-          .feild-input
-            = f.text_field :potalcode
+            %span 必須
+          .field-input
+            = f.text_field :potalcode, placeholder: 
         
         .field
-          .feild-label
+          .field-label
             = f.label :prefectures, "都道府県"
-          .feild-input
+            %span 必須
+          .field-input
             = f.text_field :prefectures
 
         .field
-          .feild-label
+          .field-label
             = f.label :municipalities, "市町村"
-          .feild-input
+            %span 必須
+          .field-input
             = f.text_field :municipalities
         
         .field
-          .feild-label
+          .field-label
             = f.label :address, "番地"
-          .feild-input
+            %span 必須
+          .field-input
             = f.text_field :address
 
         .field
-          .feild-label
+          .field-label
             = f.label :building_name, "建物名・部屋番号"
-          .feild-input
+            %span 任意
+          .field-input
             = f.text_field :building_name
 
         .field
-          .feild-label
+          .field-label
             = f.label :tel
-          .feild-input
+            %span 任意
+          .field-input
             = f.text_field :tel
 
         .actions
