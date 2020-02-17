@@ -17,7 +17,7 @@
 
 ## Association
 - has_many  :items,dependent: :destroy
-- has_many  :comments
+- has_many  :comments,dependent: :destroy
 - has_many  :likes,dependent: :destroy
 - has_one  :address
 - has_one  :card
@@ -78,7 +78,7 @@
 
 ## Association
 
-- has_many  :comments
+- has_many  :comments,dependent: :destroy
 - has_many  :likes,dependent: :destroy
 - has_many  :images, dependent: :destroy
 - belongs_to :users
@@ -108,7 +108,6 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|item|references|null: false, foreign_key|
 
 ## Association
 - has_many :items
