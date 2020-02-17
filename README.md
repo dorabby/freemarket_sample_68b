@@ -9,8 +9,6 @@
 |first-name-furigana| string |null: false|
 |name-furigana| string |null: false|
 |email|string|null: false|
-|birthyear|integer|null: false|
-|birthmonth|integer|null: false|
 |birthday|integer|null: false|
 |password|string|null: false|
 |image|text|-------|
@@ -79,10 +77,11 @@
 |brand|references||
 
 ## Association
-- has_many  :users
+
 - has_many  :comments
 - has_many  :likes,dependent: :destroy
 - has_many  :images, dependent: :destroy
+- belongs_to :users
 - belongs_to:brand
 - belongs_to:category
 
@@ -123,7 +122,7 @@
 |item|references|null: false, foreign_key|
 
 ## Association
-- belong_to :item
+- belongs_to :item
 
 
 
