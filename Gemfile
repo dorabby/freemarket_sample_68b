@@ -75,7 +75,7 @@ gem 'haml-rails'
 gem 'erb2haml'
 gem 'ancestry'
 gem 'font-awesome-rails'
-
+gem 'payjp'
 group :production do
   gem 'unicorn', '5.4.1'
 end
