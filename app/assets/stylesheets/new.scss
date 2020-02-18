@@ -1,0 +1,141 @@
+.new-header{
+  width: 100%;
+  height: 130px;
+  background-color: #f8f8f8;
+  text-align: center;
+  padding-top: 50px;
+}
+.item-img{
+  width: 150px;
+  height: 40px;
+}
+.new-body{
+  background-color: #f8f8f8;
+  display: flex;
+  justify-content: center;
+  .form-box{
+    background-color: #fff;
+    width: 60%;
+    
+    h2{
+      padding: 25px 10px;
+      font-size: 20px;
+      font-weight: bold;
+      line-height: 1.5;
+      text-align: center;
+    }
+    .item__image{
+      padding: 20px 10px;
+      border-top: 2px solid #f8f8f8;
+    }
+    .item-main{
+      padding: 30px 50px;
+      border-top: 2px solid #f8f8f8;
+      &__detail{
+        padding-top: 20px;
+      }
+      .description-form{
+        width: 100%;
+        height: 100px;
+      }
+    }
+    .item-form{
+      padding: 30px 50px;
+      border-top: 2px solid #f8f8f8;
+      display: flex;
+      justify-content: space-between;
+      .form-box{
+        width: 70%;
+        &__form{
+          padding: 15px 0;
+        }
+      }
+      .price-box{
+        display: flex;
+        padding: 20px;
+        &__form{
+          
+          border-bottom: 1px solid #868686;
+        }
+        &__price{
+          border-bottom: 1px solid #868686;
+        }
+      }
+    }
+    span{
+      font-size: 12px;
+      padding: 3px;
+    }
+    .required{
+      background-color: red;
+      color: #fff;
+    }
+    .brand-required{
+      background-color: #868686;
+      color: #fff;
+    }
+    .sub-head{
+      color: #868686;
+      padding-top: 15px;
+
+    }
+    .form{
+      height: 50px;
+      width: 100%;
+    }
+    .form-foot{
+      padding: 30px 50px;
+      border-top: 2px solid #f8f8f8;
+    }
+    .form-submit{
+      display: flex;
+      justify-content: center;
+      .item-btn{
+        width: 80%;
+        height: 50px;
+        background-color: #3CCACE;
+      } 
+    }
+      .return-btn{
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      line-height: 30px;
+      padding-top: 20px;
+      margin-bottom: 30px;
+      .return{
+        width: 100px;
+        height: 30px;
+        background-color: #868686;
+        color: #fff;  
+      }
+      a{
+        text-decoration: none;
+      }
+    }
+    input[type="submit"],button{
+      cursor: pointer;
+    }
+  }
+}
+.new-footer{
+  background-color: #f8f8f8;
+  height: 250px;
+  text-align: center;
+  ul{
+    display: flex;
+    justify-content: center;
+    padding: 50px 0;
+    font-size: 12px;
+    li{
+      padding-right: 10px;
+    }
+    a{
+      text-decoration: none;
+      color: #868686;
+    }
+  }
+  p{
+    font-size: 10px;
+  }
+}

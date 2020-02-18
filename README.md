@@ -81,8 +81,8 @@
 - has_many  :likes,dependent: :destroy
 - has_many  :images, dependent: :destroy
 - belongs_to :users
-- belongs_to:brand
-- belongs_to:category
+- belongs_to :brand
+- belongs_to :category
 
 
 
