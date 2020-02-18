@@ -1,0 +1,83 @@
+.new-header
+  = image_tag src="/assets/logo.png",class:"item-img" 
+.new-body
+  .form-box
+    %h2
+      商品の情報を入力
+    = form_for @item do |f|
+      .item__image
+        %label 出品画像
+        %span.required 必須
+        =f.fields_for :images do |i|
+          = i.file_field :image
+        最大4枚までアップロードできます
+      .item-main
+        %label 商品名
+        %span.required 必須
+        = f.text_field :name,class:"form"
+        .item-main__detail
+        %label 商品の説明
+        %span.required 必須
+        = f.text_area :description,class:"description-form"
+      .item-form
+        %h3.sub-head 商品の詳細
+        .form-box
+          .form-box__form
+            %label カテゴリー
+            %span.required 必須
+          = f.text_field :category,class:"form"
+          .form-box__form
+            %label ブランド 
+            %span.brand-required 任意
+          = f.text_field :brand,class:"form"
+          .form-box__form
+            %label 商品の状態
+            %span.required 必須
+          = f.text_field :condition,class:"form"
+      .item-form
+        %h3.sub-head 配送
+        .form-box
+          .form-box__form
+            %label 配送料の負担 
+            %span.required 必須
+          = f.text_field :condition,class:"form"
+          .form-box__form
+            %label 発送元の地域
+            %span.required 必須
+          = f.text_field :condition,class:"form"
+          .form-box__form
+            %label 発送までの日数
+            %span.required 必須
+          = f.text_field :condition,class:"form"
+      .item-form
+        %h3.sub-head 販売価格(¥300〜9,999,999)
+        .price-box
+          .price-box__form
+            %label 価格
+            %span.required 必須
+            = f.text_field :condition,class:"form"
+            .price-box__price
+              販売手数料(10%)
+            .price-box_commission
+              販売利益
+      .form-foot
+        %p 禁止されている出品、行為を必ずご確認ください。
+        またブランド品でシリアルナンバー等がある場合はご記載ください。偽ブランドの販売は犯罪であり処罰される可能性があります。また、出品をもちまして加盟店規約に同意したことになります。
+      .form-submit
+        = f.submit "出品する",class:"item-btn"
+      .return-btn
+        = link_to  "もどる", root_path,class:"return"
+.new-footer
+  .fooder-box
+    .fooder-box__teams
+      %ul
+        %li
+        = link_to "プライバシーポリシー"
+        %li
+        = link_to "利用規約"
+        %li
+        = link_to "特定商取引に関する表記"
+  .fooder-logo
+    = image_tag src="/assets/logo.png",class:"item-img" 
+    %p © FURIMA, Inc.
+
