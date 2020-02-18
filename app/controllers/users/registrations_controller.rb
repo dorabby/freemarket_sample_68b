@@ -39,7 +39,7 @@ end
   end
 
   def address_params
-    params.require(:address).permit(:family_name, :name, :family_name_furigana, :name_furigana, :potalcode, :address, :prefectures,  :municipalities)
+    params.require(:address).permit(:family_name, :name, :family_name_furigana, :name_furigana, :potalcode, :address, :prefectures,  :municipalities, :building_name, :tel )
   end
   
 end
