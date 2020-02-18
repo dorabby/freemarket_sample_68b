@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  # before_action :move_to_root, except: [:index]
   def index
   end
 
@@ -8,7 +9,7 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @item.images = Item.new
+    @item.images.new
   end
 
   def create
@@ -24,6 +25,11 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name,:seller,:buyer,:description,:condition,:size,:derivery_chage,:days,:prefecture,:price,:brand_id,:category_id).merge(saler: current_user.id,buyer: nil)
+    params.require(:item).permit(:name,:seller,:buyer,:description,:condition,:size,:derivery_chage,:days,:prefecture,:price,:brand_id,:category_id,image_attributes:[:id,:image]).merge(saler: current_user.id,buyer: nil)
+  end
+
+
+  def move_to_root
+    redirect_to action: :index unless user_signed_in?
   end
 end

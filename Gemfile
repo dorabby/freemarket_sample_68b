@@ -74,6 +74,7 @@ gem 'pry-rails'
 gem 'haml-rails'
 gem 'erb2haml'
 gem 'ancestry'
+gem 'active_hash'
 gem 'font-awesome-rails'
 
 group :production do
