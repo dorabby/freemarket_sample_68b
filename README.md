@@ -48,11 +48,9 @@
 ## cardsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|card_number|integer|null: false|
-|token|integer|null: false|
-|expiration_date_year|integer|null: false|
-|expiration_date_manth|integer|null: false|
-|user|references|null: false, foreign_key|
+|user_id|integer|null: false|
+|customer_id|string|null: false|
+|card_id|string|null: false|
 
 ## Association
 - belongs_to :user
@@ -62,12 +60,11 @@
 ## itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|seller_id|references|null: false, foreign_key: { to_table: :users }|
-|buyer_id|references|foreign_key: { to_table: :users }|
+|seller|references|null: false, foreign_key: { to_table: :users }|
+|buyer|references|foreign_key: { to_table: :users }|
 |name|string|null: false,index|
 |description|string|null: false|
 |condition|string|null: false|
-|size|integer|null: false|
 |derivery_chage|integer|null: false|
 |days|integer|null: false|
 |prefecture|string|null: false|
@@ -81,8 +78,8 @@
 - has_many  :likes,dependent: :destroy
 - has_many  :images, dependent: :destroy
 - belongs_to :users
-- belongs_to:brand
-- belongs_to:category
+- belongs_to :brand
+- belongs_to :category
 
 
 
