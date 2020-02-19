@@ -62,12 +62,11 @@
 ## itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|seller_id|references|null: false, foreign_key: { to_table: :users }|
-|buyer_id|references|foreign_key: { to_table: :users }|
+|seller|references|null: false, foreign_key: { to_table: :users }|
+|buyer|references|foreign_key: { to_table: :users }|
 |name|string|null: false,index|
 |description|string|null: false|
 |condition|string|null: false|
-|size|integer|null: false|
 |derivery_chage|integer|null: false|
 |days|integer|null: false|
 |prefecture|string|null: false|
