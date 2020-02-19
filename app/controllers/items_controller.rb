@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  # before_action :move_to_root, except: [:index]
+  before_action :move_to_root, except: [:index]
   def index
   end
 
@@ -9,10 +9,14 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @parents = Category.all.order("id ASC").limit(13)
     @item.images.new
+    @item.build_brand
   end
 
+
   def create
+    binding.pry
     @item = Item.new(item_params)
     if @item.save
       redirect_to root_path
@@ -25,7 +29,7 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name,:description,:price,:brand,:condition,:derivery_chage,:days,:prefecture,:category,image_attributes:[:image]).merge(seller: current_user.id,buyer: nil)
+    params.require(:item).permit(:name,:description,:price,:condition,:derivery_chage,:days,:prefecture_id,category_ids: [],brand_attributes: [:id, :name],images_attributes:[:id,:image]).merge(saler: current_user.id,buyer: nil)
   end
 
 

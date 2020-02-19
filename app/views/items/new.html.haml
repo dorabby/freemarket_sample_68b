@@ -8,8 +8,9 @@
       .item__image
         %label 出品画像
         %span.required 必須
-        =f.fields_for :images do |i|
-          = i.file_field :image
+        = f.fields_for :images do |i|
+          = i.label :image, for: "upload-image__btn" do
+            = i.file_field :image, type: "file"
         最大4枚までアップロードできます
       .item-main
         %label 商品名
@@ -25,11 +26,13 @@
           .form-box__form
             %label カテゴリー
             %span.required 必須
-          = f.select :category,[["変更予定",1]], {prompt: "--"},class:"form"
+          = f.collection_select :category, @parents, :id, :name,{prompt: "--"},class:"form"
           .form-box__form
-            %label ブランド 
-            %span.brand-required 任意
-          = f.text_field :brand,class:"form"
+            = f.fields_for :brand do |brand|
+              = brand.label "ブランド"
+              %span.brand-required  任意
+              %div
+                = brand.select :name,["シャネル", "ナイキ", "ルイヴィトン", "シュプリーム", "アディダス"],{prompt: "--"},class:"form"
           .form-box__form
             %label 商品の状態
             %span.required 必須
@@ -44,7 +47,7 @@
           .form-box__form
             %label 発送元の地域
             %span.required 必須
-          = f.text_field :prefecture,class:"form"
+          = f.collection_select :prefecture_id, Prefecture.all, :id, :name,{prompt: "--"},class:"form"
           .form-box__form
             %label 発送までの日数
             %span.required 必須

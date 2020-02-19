@@ -60,7 +60,7 @@
 ## itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|seller|references|null: false, foreign_key: { to_table: :users }|
+|saler|references|null: false, foreign_key: { to_table: :users }|
 |buyer|references|foreign_key: { to_table: :users }|
 |name|string|null: false,index|
 |description|string|null: false|
