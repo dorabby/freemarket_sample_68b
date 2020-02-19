@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_17_102417) do
+
+ActiveRecord::Schema.define(version: 2020_02_18_033733) do
+
+  create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "family_name", null: false
+    t.string "name", null: false
+    t.string "family_name_furigana", null: false
+    t.string "name_furigana", null: false
+    t.integer "potalcode", null: false
+    t.string "prefectures", null: false
+    t.string "municipalities", null: false
+    t.string "address", null: false
+    t.string "building_name"
+    t.integer "tel"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -30,6 +48,8 @@ ActiveRecord::Schema.define(version: 2020_02_17_102417) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "ancestry"
+    t.index ["ancestry"], name: "index_categories_on_ancestry"
   end
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -46,10 +66,9 @@ ActiveRecord::Schema.define(version: 2020_02_17_102417) do
     t.bigint "buyer"
     t.string "description", null: false
     t.string "condition", null: false
-    t.integer "size", null: false
     t.integer "derivery_chage", null: false
     t.integer "days", null: false
-    t.string "prefecture", null: false
+    t.integer "prefecture", null: false
     t.integer "price", null: false
     t.bigint "category_id", null: false
     t.bigint "brand_id"
