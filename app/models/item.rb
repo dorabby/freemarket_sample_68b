@@ -5,8 +5,8 @@ class Item < ApplicationRecord
   belongs_to :users
   belongs_to :brand,optional: true
   belongs_to :category
-  belongs_to :saler_id, class_name: "User"
-  belongs_to :buyer_id, class_name: "User", optional: true
+  belongs_to :saler, class_name: "User"
+  belongs_to :buyer, class_name: "User", optional: true
   accepts_nested_attributes_for :images,allow_destroy: true
   accepts_nested_attributes_for :brand
   validates :name, presence: true,length:{maximum:40}
