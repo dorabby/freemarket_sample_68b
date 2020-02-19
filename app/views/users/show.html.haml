@@ -1,0 +1,70 @@
+= render "/shared/header"
+
+.main-content
+  .navivar
+    %ul
+      %li
+        =link_to "FURIMA", root_path
+      %li >
+      %li
+        =link_to "マイページ",user_path(current_user) 
+      %li >
+
+  .main-box
+    .left-box
+      .left-box__var
+        .left-box__var__mypage
+          %ul
+            %li
+              =link_to "マイページ", user_path(current_user)
+            %li
+              =link_to "いいね！一覧","#"
+            %li
+              =link_to "出品する","#"
+            %li
+              =link_to "出品した商品-出品中","#"
+            %li
+              =link_to "出品した商品-売却済み","#"
+            %li
+              =link_to "購入した商品-過去の取引","#"
+            %li
+              =link_to "お問い合わせ","#"
+        .left-box__var__mypage
+          %h3 設定
+          %ul
+            %li
+              =link_to "本人情報の変更", edit_user_path(current_user)
+            %li
+              =link_to "発送元・お届け先住所変更","#"
+            %li
+              =link_to "支払い方法","#"
+            %li 
+              =link_to "ログアウト", destroy_user_session_path, method: :delete
+
+    .right-box
+      .right-box__user
+        .right-box__user__icon
+          =image_tag ("member_photo_noimage_thumb.png")
+          .right-box__user__icon__list
+            =link_to current_user.name, user_path(current_user)
+          .icon-box
+            .icon-box__list
+              %p 評価
+              =link_to "num"
+            .icon-box__list
+              %p 出品数
+              =link_to "num"
+
+      .right-box__list
+        .list-content
+          .item-list
+            %h2 購入した商品
+        .item-tab
+          .item-tab__left
+            =link_to "取引中","#"
+          .item-tab__right
+            =link_to "過去の取引","#"
+        .item-content
+          過去の取引がありません
+
+= render "shared/footer"
