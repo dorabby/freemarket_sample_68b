@@ -48,11 +48,9 @@
 ## cardsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|card_number|integer|null: false|
-|token|integer|null: false|
-|expiration_date_year|integer|null: false|
-|expiration_date_manth|integer|null: false|
-|user|references|null: false, foreign_key|
+|user_id|integer|null: false|
+|customer_id|string|null: false|
+|card_id|string|null: false|
 
 ## Association
 - belongs_to :user
