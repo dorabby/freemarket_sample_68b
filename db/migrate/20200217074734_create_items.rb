@@ -8,7 +8,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.string :condition, null: false
       t.integer :derivery_chage,null: false
       t.integer :days,null: false
-      t.string :prefecture,null: false
+      t.integer :prefecture,null: false
       t.integer :price,null: false
       t.references  :category,null: false, foreign_key:true
       t.references  :brand, foreign_key:true

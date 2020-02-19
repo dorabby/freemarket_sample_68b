@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 2020_02_18_033733) do
     t.string "condition", null: false
     t.integer "derivery_chage", null: false
     t.integer "days", null: false
-    t.string "prefecture", null: false
+    t.integer "prefecture", null: false
     t.integer "price", null: false
     t.bigint "category_id", null: false
     t.bigint "brand_id"
