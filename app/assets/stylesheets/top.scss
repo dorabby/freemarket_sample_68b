@@ -291,9 +291,7 @@
         margin-right: 10px;
       }
 
-      img {
-        width: 180px;
-      }
+      
     }
   }
   
@@ -535,6 +533,10 @@
     }
     &__text{
       font-size: 35px;
+    }
+    &__btn {
+      justify-content: center;
+      margin: 20px auto 0;
     }
   }
 }
