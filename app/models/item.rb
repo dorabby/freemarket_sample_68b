@@ -8,16 +8,17 @@ class Item < ApplicationRecord
   belongs_to :saler, class_name: "User"
   belongs_to :buyer, class_name: "User", optional: true
   accepts_nested_attributes_for :images,allow_destroy: true
-
+  accepts_nested_attributes_for :brand
   validates :name, presence: true,length:{maximum:40}
   validates :description, presence: true,length:{maximum:1000}
   validates :condition, presence: true
   validates :derivery_chage, presence: true
   validates :days, presence: true
-  validates :prifecture, presence: true
+  validates :prifecture_id, presence: true
   validates :price, presence: true,numericality: { only_integer: true,
     greater_than: 300, less_than: 9999999
     }
 # あとで追加しろ
-  belongs_to :category
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :prefecture
 end
