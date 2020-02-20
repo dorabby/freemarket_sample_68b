@@ -1,0 +1,17 @@
+.r-content
+  .r-container
+    .r-head
+      %h2 支払い方法
+    .r-add_card
+      .r-add_card__sub_head
+        %h3 クレジットカード一覧
+        %ul.add_card-sub_head
+      .r-add_card__add-btn
+        .r-add_card__add-btn__content
+          = link_to "#", class: 'btn-add_card' do
+            = icon('fas', 'credit-card', class: 'icon')
+            %span クレジットカードを追加する
+      .r-add_card__about
+        = link_to "#" do
+          %span 支払い方法について
+          = icon('fas', 'credit-card', class: 'icon')

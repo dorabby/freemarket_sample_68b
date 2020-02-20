@@ -6,7 +6,8 @@ Rails.application.routes.draw do
     get 'addresses', to: 'users/registrations#new_address'
     post 'addresses', to: 'users/registrations#create_address'
   end
-  root 'items#index'
+  # root 'items#index'
+  root 'card#payment'
   resources :card, only: [:new, :show] do
     collection do
       post 'show', to: 'card#show'
@@ -16,5 +17,11 @@ Rails.application.routes.draw do
   end
   resources :users, only: [:destroy]
   resources :items, only: [:new,:create,:show]
-
+  resources :purchase, only: [:index] do
+    collection do
+      get 'index', to: 'purchase#index'
+      post 'pay', to: 'purchase#pay'
+      get 'done', to: 'purchase#done'
+    end
+  end
 end
