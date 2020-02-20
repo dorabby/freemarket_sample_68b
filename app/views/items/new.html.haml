@@ -1,17 +1,33 @@
 .new-header
-  = image_tag src="/assets/logo.png",class:"item-img" 
+  = link_to root_path do
+    = image_tag src="/assets/logo.png",class:"item-img" 
 .new-body
   .form-box
     %h2
       商品の情報を入力
-    = form_for @item do |f|
+    = form_for @item,html: {class: "sell-form dropzone", id: "item-dropzone"} do |f|
       .item__image
         %label 出品画像
         %span.required 必須
-        = f.fields_for :images do |i|
-          = i.label :image, for: "upload-image__btn" do
-            = i.file_field :image, type: "file"
-        最大4枚までアップロードできます
+        %p.column 最大4枚までアップロードできます
+        #image-box
+          #previews
+          = f.fields_for :images,class: "filefield" do |image|
+            - if @item.persisted?
+              - @item.images.each_with_index do |image, i|
+                = image_tag image.src.url, data: { index: i }, width: "100", height: '100'
+          = f.fields_for :images do |image|
+            .js-file_group{"data-index" => "#{image.index}"}
+              = image.file_field :image, class: 'js-file'
+              %span.js-remove 削除
+          - if @item.persisted?
+            = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
+          - if @item.persisted?
+            .js-file_group{"data-index" => "#{@item.images.count}"}
+              = file_field_tag :image, name: "item[images_attributes][#{@item.images.count}][image]", class: 'js-file'
+              %span.js-remove 削除
+          
+
       .item-main
         %label 商品名
         %span.required 必須
@@ -26,13 +42,13 @@
           .form-box__form
             %label カテゴリー
             %span.required 必須
-          = f.collection_select :category, @parents, :id, :name,{prompt: "--"},class:"form"
+          = f.select :category, Category.where(ancestry: nil).collect {|p| [ p.name, p.id, name:p.id ]},{prompt: "---"},class:"form"
           .form-box__form
             = f.fields_for :brand do |brand|
               = brand.label "ブランド"
-              %span.brand-required  任意
+              %span.brand-required 任意
               %div
-                = brand.select :name,["シャネル", "ナイキ", "ルイヴィトン", "シュプリーム", "アディダス"],{prompt: "--"},class:"form"
+                = brand.text_field :name, placeholder: "例）シャネル", value: "",class:"form"
           .form-box__form
             %label 商品の状態
             %span.required 必須
@@ -81,6 +97,7 @@
         %li
         = link_to "特定商取引に関する表記"
   .fooder-logo
-    = image_tag src="/assets/logo.png",class:"item-img" 
+    = link_to root_path do
+      = image_tag src="/assets/logo.png",class:"item-img" 
     %p © FURIMA, Inc.
 

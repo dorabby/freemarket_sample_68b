@@ -14,6 +14,8 @@ Rails.application.routes.draw do
       post 'delete', to: 'card#delete'
     end
   end
+
   resources :users, only: [:show,:edit,:update,:destroy]
   resources :items, only: [:new,:create,:show]
+
 end
