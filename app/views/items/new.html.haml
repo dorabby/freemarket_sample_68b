@@ -37,7 +37,7 @@
           .form-box__form
             %label カテゴリー
             %span.required 必須
-          = f.select :category, Category.where(ancestry: nil).collect {|p| [ p.name, p.id, name:p.id ]},{prompt: "---"},class:"form"
+          = f.select :category, Category.where(ancestry: nil).collect {|p| [ p.name, p.id, name:p.id ]},{prompt: "--"},class:"form"
           .form-box__form
             = f.fields_for :brand do |brand|
               = brand.label "ブランド"
@@ -70,10 +70,7 @@
             %label 価格
             %span.required 必須
             = f.number_field :price, placeholder: "例）300",class:"form"
-            .price-box__price
-              販売手数料(10%)
-            .price-box_commission
-              販売利益
+
       .form-foot
         %p 禁止されている出品、行為を必ずご確認ください。
         またブランド品でシリアルナンバー等がある場合はご記載ください。偽ブランドの販売は犯罪であり処罰される可能性があります。また、出品をもちまして加盟店規約に同意したことになります。
