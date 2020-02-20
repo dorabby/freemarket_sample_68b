@@ -32,12 +32,12 @@
 |name|string|null: false|
 |family_name_furigana|string|null: false|
 |name_furigana|string|null: false|
-|postalcode|integer|null: false|
+|postalcode|string|null: false|
 |prefecture|string|null: false|
 |municipalities|string|null: false|
 |address|string|null: false|
 |building_name|string||
-|tel|integer|null: false|
+|tel|string|null: false|
 |user|references|null: false, foreign_key|
 
 ## Association
