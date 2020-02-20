@@ -5,12 +5,12 @@ class CreateAddresses < ActiveRecord::Migration[5.2]
       t.string :name, null: false
       t.string :family_name_furigana,   null: false                   
       t.string :name_furigana,          null: false   
-      t.integer :potalcode, null: false
+      t.string :potalcode, null: false
       t.string :prefectures, null: false
       t.string :municipalities, null: false
       t.string :address, null: false
       t.string :building_name
-      t.integer :tel
+      t.string :tel
       t.references :user
       t.timestamps
     end

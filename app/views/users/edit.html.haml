@@ -1,0 +1,48 @@
+#account-page.account-page
+  .header
+    .logo
+      = link_to root_path do
+        = image_tag("logo.png")
+  .account-page__inner.clearfix
+    .account-page__inner--left.account-page__header
+      %h2 会員情報の変更
+    .account-page__inner--right.user-form
+      = form_for @user do |f|
+        .field
+          .field-label
+            = f.label :nick_name, "ニックネーム"
+            %span 必須
+          .field-input
+            = f.text_field :nick_name, autofocus: true, placeholder: "例） タロウ"
+        .field
+          .field-label
+            = f.label :email, "メールアドレス"
+            %span 必須
+          .field-input
+            = f.email_field :email, placeholder: "PC・携帯どちらでも可"
+
+        .field
+          .field-label
+            = f.label :family_name, "お名前（全角）"
+            %span 必須
+          .field-name
+            = f.text_field :family_name, placeholder: "例） 山田"
+            = f.text_field :name, placeholder: "例） 太郎"
+        .field
+          .field-label
+            = f.label :family_name_furigana, "お名前カナ（全角）"
+            %span 必須
+          .field-name
+            = f.text_field :family_name_furigana, placeholder: "例） ヤマダ"
+            = f.text_field :name_furigana, placeholder: "例） タロウ"
+
+        .field
+          .field-label
+            = f.label :birthday, "生年月日"
+            %span 必須
+          .field-input
+            != sprintf(f.date_select(:birthday,with_css_classes:'date', prompt:"--",use_month_numbers:true, start_year:Time.now.year, end_year:1900, date_separator:'%s'),'年','月')+'日'
+
+        .actions
+          = f.submit "変更", class: 'btn'
+

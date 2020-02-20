@@ -14,12 +14,8 @@ Rails.application.routes.draw do
       post 'delete', to: 'card#delete'
     end
   end
-  resources :users, only: [:destroy]
-  resources :items do
-    collection do
-      get 'get_category_children', defaults: { format: 'json' }
-      get 'get_category_grandchildren',defaults: { format: 'json' }
-    end
-  end
+
+  resources :users, only: [:show,:edit,:update,:destroy]
+  resources :items, only: [:new,:create,:show]
 
 end
