@@ -1,7 +1,7 @@
 .pickup
   .pickup-head
     ピックアップカテゴリ
-  .pickup-box
+  .pickup-boxs
     .pickup-box__title
       = link_to '新規投稿登録'
     .pickup-lists
@@ -86,8 +86,8 @@
                 = icon('fa','star',class: 'icon')
                 0
             %p (税込)
-  
-  .exhibition-btn
-    .exhibition-btn__text
-      出品する
-      .image
+  = link_to new_item_path do
+    .exhibition-btn
+      .exhibition-btn__text
+        出品する
+        .image

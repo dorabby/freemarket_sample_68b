@@ -43,7 +43,13 @@ group :development, :test do
   gem 'rails-controller-testing'
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'capistrano'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano3-unicorn'
 end
+
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
@@ -52,11 +58,6 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'capistrano'
-  gem 'capistrano-rbenv'
-  gem 'capistrano-bundler'
-  gem 'capistrano-rails'
-  gem 'capistrano3-unicorn'
 end
 
 group :test do
@@ -81,7 +82,12 @@ gem 'erb2haml'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'ancestry'
+gem 'active_hash'
 gem 'font-awesome-rails'
+gem 'payjp'
+gem 'jquery-rails'
+gem 'carrierwave'
+gem 'mini_magick'
 
 group :production do
   gem 'unicorn', '5.4.1'
