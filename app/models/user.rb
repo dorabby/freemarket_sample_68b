@@ -5,7 +5,17 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+
+
   #バリデーション
-  #validates :nick_name, :family_name, :name, :family_name_furigana, :name_furigana, :birthday, presence: true
+  validates :nick_name, presence: true
+  validates :family_name, presence: true, format: {with: /\A[ぁ-んァ-ン一-龥]+$\z/}
+  validates :name, presence: true, format: {with: /\A[ぁ-んァ-ン一-龥]+$\z/}
+  validates :family_name_furigana, presence: true, format: {with: /\A[ぁ-んァ-ン]+$\z/}
+  validates :name_furigana, presence: true, format: {with: /\A[ぁ-んァ-ン]+$\z/}
+  validates :birthday, presence: true
+  
+
+
   has_one :address
 end
