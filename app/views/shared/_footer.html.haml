@@ -1,0 +1,51 @@
+.appbanner
+  .banner-box
+    .banner-box__title
+      %p だれでもかんたん、人生を変えるフリマアプリ
+    .banner-box__text
+      %p 今すぐ無料ダウンロード！
+    .banner-box__btn
+      %a(href="#")
+        = image_tag("app-store-9c5e28e8f81bd9912e0ded2f78821e04778a1356c05dc7c7bf1e88614be37c34.svg")
+      %a(href="#")
+        = image_tag("google-play-469c63f1269e456307c4dde176b33cc3bbbbf142ac4d7369656010130149db1a.svg")
+
+.footer
+  .footer_content
+    .footer_content__list
+      .footer_content__list__box
+        %h2 
+          =link_to "FURIMAについて"
+        %ul 
+          %li 
+            =link_to "会社概要（運営会社）","#"
+          %li 
+            =link_to "プライバシーポリシー","#"
+          %li 
+            =link_to "FURIM利用規約","#"
+          %li 
+            =link_to "ポイントに関する特約","#"
+      .footer_content__list__box
+        %h2 
+          =link_to "FURIMAを見る"
+        %ul
+          %li
+            =link_to "カテゴリ一覧"
+          %li 
+            =link_to "ブランド一覧"
+      .footer_content__list__box
+        %h2 
+          =link_to "ヘルプ＆ガイド"
+        %ul
+          %li 
+            =link_to "FURIMAガイド"
+          %li 
+            =link_to "FURIMAロゴ利用ガイドライン"
+          %li 
+            =link_to"お知らせ"
+    .footer_logo
+      = image_tag("logo-white.png")
+    .footer_logo_sub
+      %p © FURIMA
+      
+
