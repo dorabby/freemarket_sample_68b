@@ -46,7 +46,7 @@
         .right-box__user__icon
           =image_tag ("member_photo_noimage_thumb.png")
           .right-box__user__icon__list
-            =link_to current_user.name, user_path(current_user)
+            =link_to current_user.nick_name, user_path(current_user)
           .icon-box
             .icon-box__list
               %p 評価
