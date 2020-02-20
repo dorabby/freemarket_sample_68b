@@ -1,16 +1,18 @@
 .new-header
-  = image_tag src="/assets/logo.png",class:"item-img" 
+  = link_to root_path do
+    = image_tag src="/assets/logo.png",class:"item-img" 
 .new-body
   .form-box
     %h2
       商品の情報を入力
-    = form_for @item do |f|
+    = form_for @item,html: {class: "sell-form dropzone", id: "item-dropzone"} do |f|
       .item__image
         %label 出品画像
         %span.required 必須
-        最大4枚までアップロードできます
+        %p.column 最大4枚までアップロードできます
         #image-box
           #previews
+          = f.fields_for :images,class: "filefield" do |image|
             - if @item.persisted?
               - @item.images.each_with_index do |image, i|
                 = image_tag image.src.url, data: { index: i }, width: "100", height: '100'
@@ -95,6 +97,7 @@
         %li
         = link_to "特定商取引に関する表記"
   .fooder-logo
-    = image_tag src="/assets/logo.png",class:"item-img" 
+    = link_to root_path do
+      = image_tag src="/assets/logo.png",class:"item-img" 
     %p © FURIMA, Inc.
 
