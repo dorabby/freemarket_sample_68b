@@ -1,0 +1,71 @@
+#account-page.account-page
+  .header
+    .logo
+      = link_to root_path do
+        = image_tag("logo.png")
+  .account-page__inner.clearfix
+    .account-page__inner--left.account-page__header
+      %h2 住所情報登録
+      = render "devise/shared/links"
+    .account-page__inner--right.user-form
+      = form_for @address do |f|
+        .field
+          .field-label
+            = f.label :family_name, "お名前（全角）"
+            %span 必須
+          .field-name
+            = f.text_field :family_name, placeholder: "例） 山田"
+            = f.text_field :name, placeholder: "例） 太郎"
+
+        .field
+          .field-label
+            = f.label :family_name_furigana, "お名前カナ（全角）"
+            %span 必須
+          .field-name
+            = f.text_field :family_name_furigana, placeholder: "例） ヤマダ"
+            = f.text_field :name_furigana, placeholder: "例） タロウ"
+
+        .field
+          .field-label
+            = f.label :potalcode, "郵便番号"
+            %span 必須
+          .field-input
+            = f.text_field :potalcode, placeholder: " 7桁の数字"
+        
+        .field
+          .field-label
+            = f.label :prefectures, "都道府県"
+            %span 必須
+          .field-input
+            = f.text_field :prefectures, placeholder: "例） 大阪府"
+
+        .field
+          .field-label
+            = f.label :municipalities, "市町村"
+            %span 必須
+          .field-input
+            = f.text_field :municipalities, placeholder: "例） 大阪市中央区難波"
+        
+        .field
+          .field-label
+            = f.label :address, "番地"
+            %span 必須
+          .field-input
+            = f.text_field :address, placeholder: "例） ５丁目１−６０"
+
+        .field
+          .field-label
+            = f.label :building_name, "建物名・部屋番号"
+            %span 任意
+          .field-input
+            = f.text_field :building_name, placeholder: "例） ナンバスカイオ"
+
+        .field
+          .field-label
+            = f.label :tel
+            %span 任意
+          .field-input
+            = f.text_field :tel, placeholder: " 携帯電話番号 11桁"
+
+        .actions
+          = f.submit "新規登録", class: 'btn'
