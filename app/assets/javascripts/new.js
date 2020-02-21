@@ -10,7 +10,22 @@ $(function(){
     $.each(this.files, function(i, file){
       //FileReaderのreadAsDataURLで指定したFileオブジェクトを読み込む
       var fileReader = new FileReader();
+  $(document).on('turbolinks:load', function() {
+  // 画像用のinputを生成する関数
+  const buildFileField = (index)=> {
+    const html = `<div data-index="${index}" class="js-file_group">
+                    <input class="js-file" type="file"
+                    name="item[images_attributes][${index}][image]"
+                    id="item_images_attributes_${index}_image"><br>
+                    <span class="js-remove">削除</span>
+                  </div>`;
+    return html;
+  }
 
+  const buildImg = (index, url)=> {
+    const html = `<img data-index="${index}" src="${url}" width="100px" height="100px">`;
+    return html;
+    
       //DataTransferオブジェクトに対して、fileを追加
       dataBox.items.add(file)
       //DataTransferオブジェクトに入ったfile一覧をfile_fieldの中に代入
@@ -132,5 +147,3 @@ window.onload = function(e){
 }
 });
 
-
-//以降カテゴリー
