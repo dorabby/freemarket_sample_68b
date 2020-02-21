@@ -9,10 +9,10 @@
         %P フリマアプリです
       .main_box__content__btn
         .main_box__content__btn__apple
-          %a(href="#")
+          =link_to "#" do
             = image_tag("app-store-9c5e28e8f81bd9912e0ded2f78821e04778a1356c05dc7c7bf1e88614be37c34.svg")
         .main_box__content__btn__google
-          %a(href="#")
+          =link_to "#" do
             = image_tag("google-play-469c63f1269e456307c4dde176b33cc3bbbbf142ac4d7369656010130149db1a.svg")
 
   %section.top
@@ -58,10 +58,10 @@
         出品・購入回数も業界最多です！
         %br/
         ほしかったあの商品に出会えるかもしれません。
-      .btn
-        %a(href="#")
+      .p_btn
+        =link_to "#" do
           = image_tag("app-store-9c5e28e8f81bd9912e0ded2f78821e04778a1356c05dc7c7bf1e88614be37c34.svg")
-        %a(href="#")
+        =link_to "#" do
           = image_tag("google-play-469c63f1269e456307c4dde176b33cc3bbbbf142ac4d7369656010130149db1a.svg")
 
   %section.tokutyou
@@ -96,3 +96,5 @@
   = render "pickup"
 
   = render "shared/footer"
+
+  

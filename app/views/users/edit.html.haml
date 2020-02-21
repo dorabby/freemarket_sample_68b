@@ -7,7 +7,7 @@
     .account-page__inner--left.account-page__header
       %h2 会員情報の変更
     .account-page__inner--right.user-form
-      = form_for @user do |f|
+      = form_for current_user do |f|
         .field
           .field-label
             = f.label :nick_name, "ニックネーム"
