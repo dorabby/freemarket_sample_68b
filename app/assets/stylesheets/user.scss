@@ -105,7 +105,7 @@
   }
 }
 
-.btn {
+.change_btn {
   display: inline-block;
   height: 50px;
   // padding: 0 30px;
@@ -114,6 +114,7 @@
   text-align: center;
   border: none;
   border-radius: 2px;
+  padding: 0 30px;
 }
 
 input[type='submit'] {
