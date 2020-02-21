@@ -39,10 +39,14 @@
       .item-form
         %h3.sub-head 商品の詳細
         .form-box
-          .form-box__form
-            %label カテゴリー
-            %span.required 必須
-          = f.select :category, Category.where(ancestry: nil).collect {|p| [ p.name, p.id, name:p.id ]},{prompt: "---"},class:"form"
+          .listing-form-box
+            .listing-product-detail__category
+              = f.label 'カテゴリー', class: 'listing-default__label'
+              %span.listing-default--require 必須
+              .listing-select-wrapper
+                .listing-select-wrapper__box
+                  = f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+                  %i.fas.fa-chevron-down.listing-select-wrapper__box--arrow-down
           .form-box__form
             = f.fields_for :brand do |brand|
               = brand.label "ブランド"
@@ -52,7 +56,7 @@
           .form-box__form
             %label 商品の状態
             %span.required 必須
-          = f.select :condition, ["新品・未使用", "未使用に近い", "目立った傷や汚れなし", "やや傷や汚れあり", "傷や汚れあり", "全体的に状態が悪い"], {prompt: "--"},class:"form"
+            = f.select :condition, ["新品・未使用", "未使用に近い", "目立った傷や汚れなし", "やや傷や汚れあり", "傷や汚れあり", "全体的に状態が悪い"], {prompt: "--"},class:"form"
       .item-form
         %h3.sub-head 配送
         .form-box

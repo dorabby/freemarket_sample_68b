@@ -11,22 +11,28 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @parents = Category.all.order("id ASC").limit(13)
+    @category_parent_array = ["--"]
+    Category.where(ancestry: nil).each do |parent|
+      @category_parent_array << parent.name
+    end
     @item.images.new
     @item.build_brand
   end
 
-
-  def get_category_children
-    @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
-  end
-
-  def get_category_grandchildren
+    # 親カテゴリーが選択された後に動くアクション
+    def get_category_children
+      #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
+      @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
+   end
+  
+    # 子カテゴリーが選択された後に動くアクション
+   def get_category_grandchildren
+    #選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
     @category_grandchildren = Category.find("#{params[:child_id]}").children
-  end
+   end
+
 
   def create
-    binding.pry
     @item = Item.new(item_params)
     if @item.save
       redirect_to root_path
@@ -59,7 +65,7 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name,:description,:price,:condition,:derivery_chage,:days,:prefecture_id,category_ids: [],brand_attributes: [:id, :name],images_attributes:[:id,:_destroy,:image]).merge(saler: current_user.id,buyer: nil)
+    params.require(:item).permit(:name,:description,:price,:condition,:derivery_chage,:days,:prefecture_id,:category_id,brand_attributes: [:id, :name],images_attributes:[:id,:_destroy,:image]).merge(saler: current_user.id,buyer: nil)
   end
 
   def set_item
@@ -70,4 +76,6 @@ class ItemsController < ApplicationController
   def move_to_root
     redirect_to action: :index unless user_signed_in?
   end
+
+  
 end
