@@ -282,15 +282,17 @@
         font-size: 18px;
         margin: 20px 0 30px;
         line-height: 1.5;
+        .p_btn {
+          display: flex;
+        }
       }
   
-      .btn {
-        display: flex;
-      }
-  
-      .btn a  {
+      .p_btn a  {
         margin-right: 10px;
+        text-decoration: none;
       }
+  
+      
 
       
     }
@@ -469,6 +471,7 @@
                 justify-content: space-between;align-items: center;
               }
               .fa{
+                font: normal normal normal 14px/1 FontAwesome;
                 display: inline-block;
                 font-size: inherit;
                 text-rendering: auto;
