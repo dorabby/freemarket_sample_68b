@@ -10,7 +10,22 @@ $(function(){
     $.each(this.files, function(i, file){
       //FileReaderのreadAsDataURLで指定したFileオブジェクトを読み込む
       var fileReader = new FileReader();
+  $(document).on('turbolinks:load', function() {
+  // 画像用のinputを生成する関数
+  const buildFileField = (index)=> {
+    const html = `<div data-index="${index}" class="js-file_group">
+                    <input class="js-file" type="file"
+                    name="item[images_attributes][${index}][image]"
+                    id="item_images_attributes_${index}_image"><br>
+                    <span class="js-remove">削除</span>
+                  </div>`;
+    return html;
+  }
 
+  const buildImg = (index, url)=> {
+    const html = `<img data-index="${index}" src="${url}" width="100px" height="100px">`;
+    return html;
+=======
       //DataTransferオブジェクトに対して、fileを追加
       dataBox.items.add(file)
       //DataTransferオブジェクトに入ったfile一覧をfile_fieldの中に代入
@@ -133,6 +148,18 @@ window.onload = function(e){
 });
 
 
+  $('#image-box').on('click', '.js-remove', function() {
+    const targetIndex = $(this).parent().data('index')
+    // 該当indexを振られているチェックボックスを取得する
+    const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
+    // もしチェックボックスが存在すればチェックを入れる
+    if (hiddenCheck) hiddenCheck.prop('checked', true);
+    $(this).parent().remove();
+    // 画像入力欄が0個にならないようにしておく
+    if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
+    $(`img[data-index="${targetIndex}"]`).remove();
+  });
 
 
-//以降カテゴリー
+
+});
