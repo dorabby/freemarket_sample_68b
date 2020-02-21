@@ -1,0 +1,68 @@
+.containar
+  %header.top_header
+    %h1
+      = link_to root_path do
+        = image_tag("logo.png")
+  %main.single_main      
+    %section.l_single_container.buy_item_container   
+      %h2.l_single_head.buy_head 購入内容の確認
+      %section.buy_content.buy_item
+        .buy_content_inner
+          .buy_item_box
+            %h3.buy_item_image
+              = image_tag("pict-reason-01.jpg")
+            .buy-item-detail
+              %p.buy-item-name 携帯と手
+              %p.buy-price-ja.bold
+                %span 3000
+                %span.item-shipping-fee (税込)送料込み
+      %section.buy_content.buy_item          
+        .buy_content_inner
+          %form{:action => "#", :class => "buy_form", :method => "post", :novalidate => "novalidate"}
+            %ul.buy_price_table   
+              %li.buy_price_row.buy_you_pay.bold
+                .buy_price_cell.buy_price_cell_label 支払い金額
+                .buy_price_cell
+                  %span.data_buy_pay ¥3,000
+            %ul.buy_accordion.buy_not_have_point
+              %li.accrodion_parent
+                .checkbox_default.buy_use_point
+                  %input(type = "checkbox" disabled)/
+                  %i.icon_check
+                  %label ポイントを使用 (所持ポイント: P0)
+            %section.buy_content.buy_user_info
+              .buy_content_inner
+                %h3 支払い方法 
+                %a(href="#")
+                  .buy_user_info_text
+                    %i.icon_plus_circle  
+                    %span.buy_register_text 登録してください
+            %section.buy_content.buy_user_info
+              .buy_content_inner
+                .clearfix
+                  %h3.left 配送先
+                  %a(href="#" class="right buy_user-info_fix") 
+                    %span 変更する
+                %address.buy_user_info_text
+                  %p
+                    〒570-0046  
+                    %br/ 
+                    大阪府 守口市 南寺方北通2丁目2番21号
+                    %br/
+                    大林 海斗
+            %section.buy_content.buy_user_info
+              %button(type="submit" class="btn_default btn_red bold") 購入する
+  .new-footer
+    .fooder-box
+      .fooder-box__teams
+        %ul
+          %li
+          = link_to "プライバシーポリシー"
+          %li
+          = link_to "利用規約"
+          %li
+          = link_to "特定商取引に関する表記"
+    .fooder-logo
+      = link_to root_path do
+        = image_tag("logo.png") 
+      %p © FURIMA, Inc.
