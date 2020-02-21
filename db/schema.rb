@@ -63,20 +63,22 @@ ActiveRecord::Schema.define(version: 2020_02_18_033733) do
     t.integer "prefecture_id", null: false
     t.string "city"
     t.string "name", null: false
-    t.bigint "saler", null: false
-    t.bigint "buyer"
+    t.bigint "saler_id", null: false
+    t.bigint "buyer_id"
     t.string "description", null: false
     t.string "condition", null: false
     t.integer "derivery_chage", null: false
     t.integer "days", null: false
     t.integer "price", null: false
-    t.bigint "category_id", null: false
+    t.bigint "category_id"
     t.bigint "brand_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["brand_id"], name: "index_items_on_brand_id"
+    t.index ["buyer_id"], name: "index_items_on_buyer_id"
     t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["name"], name: "index_items_on_name"
+    t.index ["saler_id"], name: "index_items_on_saler_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -100,4 +102,6 @@ ActiveRecord::Schema.define(version: 2020_02_18_033733) do
   add_foreign_key "images", "items"
   add_foreign_key "items", "brands"
   add_foreign_key "items", "categories"
+  add_foreign_key "items", "users", column: "buyer_id"
+  add_foreign_key "items", "users", column: "saler_id"
 end

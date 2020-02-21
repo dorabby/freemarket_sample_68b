@@ -26,14 +26,12 @@ class ItemsController < ApplicationController
   end
 
   def create
-    binding.pry
     @item = Item.new(item_params)
-    if @item.save
+    if @item.save!
       redirect_to root_path
     else
       redirect_to new_item_path
     end
-    # パス後々変更予定
   end
 
 
@@ -59,8 +57,9 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name,:description,:price,:condition,:derivery_chage,:days,:prefecture_id,category_ids: [],brand_attributes: [:id, :name],images_attributes:[:id,:_destroy,:image]).merge(saler: current_user.id,buyer: nil)
+    params.require(:item).permit(:name,:description,:price,:condition,:derivery_chage,:days,:prefecture_id,brand_attributes: [:id,:name],images_attributes:[:id,:_destroy,:image]).merge(saler_id: current_user.id,buyer_id: nil)
   end
+  # category_ids:[] category出来次第入れる（マイグレーションファイルとitemモデル内も編集すること）
 
   def set_item
     @item = Item.find(params[:id])
