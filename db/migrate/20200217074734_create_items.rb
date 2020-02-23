@@ -11,8 +11,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.integer :derivery_chage,null: false
       t.integer :days,null: false
       t.integer :price,null: false
-      t.references  :category, foreign_key:true
-      # ↑categoryできるまでnull: falseを外しているので注意 category出来次第記入後、db:dropして作り直すこと
+      t.references  :category,null: false, foreign_key:true
       t.references  :brand, foreign_key:true
 
       t.timestamps

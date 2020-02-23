@@ -11,9 +11,7 @@ $(function(){
                           <select class="listing-select-wrapper__box--select" id="child_category" name="category_id">
                             <option value="---" data-category="---">---</option>
                             ${insertHTML}
-                          <select>
-                          <i class='fas fa-chevron-down listing-select-wrapper__box--arrow-down'></i>
-                        </div>
+                          </select>
                       </div>`;
     $('.listing-product-detail__category').append(childSelectHtml);
   }
@@ -26,8 +24,6 @@ $(function(){
                                   <option value="---" data-category="---">---</option>
                                   ${insertHTML}
                                 </select>
-                                <i class='fas fa-chevron-down listing-select-wrapper__box--arrow-down'></i>
-                              </div>
                             </div>`;
     $('.listing-product-detail__category').append(grandchildSelectHtml);
   }
@@ -44,7 +40,7 @@ $(function(){
       })
       .done(function(children){
         console.log(this)
-        $('#children_wrapper').remove(); //親が変更された時、子以下を削除するする
+        $('#children_wrapper').remove(); //親が変更された時、子以下を削除する
         $('#grandchildren_wrapper').remove();
         $('#size_wrapper').remove();
         $('#brand_wrapper').remove();

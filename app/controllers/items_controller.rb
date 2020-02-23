@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :move_to_root, except: [:index]
-  before_action :set_item, except: [:index, :new, :create]
+  before_action :set_item, only:[:destroy,:edit,:update]
   def index
     @items = Item.includes(:images).order('created_at DESC')
   end
@@ -19,20 +19,17 @@ class ItemsController < ApplicationController
     @item.build_brand
   end
 
-    # 親カテゴリーが選択された後に動くアクション
     def get_category_children
-      #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
       @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
    end
   
-    # 子カテゴリーが選択された後に動くアクション
    def get_category_grandchildren
-    #選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
     @category_grandchildren = Category.find("#{params[:child_id]}").children
    end
 
 
   def create
+    binding.pry
     @item = Item.new(item_params)
     if @item.save!
       redirect_to root_path
@@ -63,10 +60,12 @@ class ItemsController < ApplicationController
 
 
   private
+
+
+
   def item_params
-    params.require(:item).permit(:name,:description,:price,:condition,:derivery_chage,:days,:prefecture_id,:category_id,brand_attributes: [:id, :name],images_attributes:[:id,:_destroy,:image]).merge(saler: current_user.id,buyer: nil)
+    params.require(:item).permit(:name,:description,:price,:condition,:derivery_chage,:days,:prefecture_id,:category,brand_attributes: [:id, :name],images_attributes:[:id,:_destroy,:image]).merge(saler_id: current_user.id,buyer_id: nil)
   end
-  # category_ids:[] category出来次第入れる（マイグレーションファイルとitemモデル内も編集すること）
 
   def set_item
     @item = Item.find(params[:id])

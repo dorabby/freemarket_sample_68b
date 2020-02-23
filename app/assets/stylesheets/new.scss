@@ -38,6 +38,9 @@
         &__content{
           border-bottom: 1px solid #3CCACE;
           padding: 50px 0;
+          img{
+            width: 130px;
+          }
         }
         &__operetion{
           text-align: center;
@@ -114,7 +117,7 @@
       justify-content: space-between;
       .form-box{
         width: 70%;
-        &__form{
+        &__form,.listing-product-detail__category,.listing-select-wrapper__box{
           padding: 15px 0;
         }
       }
@@ -140,7 +143,7 @@
       padding-top: 15px;
 
     }
-    .form{
+    .form,.listing-select-wrapper__box--select{
       height: 50px;
       width: 100%;
       padding: 10px 16px 8px;
