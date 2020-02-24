@@ -28,4 +28,3 @@
 
 # Ignore Byebug command history file.
 public/uploads/*
-public/uploads/image
