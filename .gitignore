@@ -25,3 +25,7 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# Ignore Byebug command history file.
+public/uploads/*
+public/uploads/image
