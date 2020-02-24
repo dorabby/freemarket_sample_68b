@@ -17,12 +17,12 @@ ActiveRecord::Schema.define(version: 2020_02_18_033733) do
     t.string "name", null: false
     t.string "family_name_furigana", null: false
     t.string "name_furigana", null: false
-    t.integer "potalcode", null: false
+    t.string "potalcode", null: false
     t.string "prefectures", null: false
     t.string "municipalities", null: false
     t.string "address", null: false
     t.string "building_name"
-    t.integer "tel"
+    t.string "tel"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -61,16 +61,15 @@ ActiveRecord::Schema.define(version: 2020_02_18_033733) do
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
-    t.bigint "seller", null: false
-    t.bigint "buyer"
+    t.bigint "saler_id", null: false
+    t.bigint "buyer_id"
     t.string "description", null: false
     t.string "condition", null: false
-    t.integer "size", null: false
-    t.integer "derivery_chage", null: false
+    t.integer "derivery_charge", null: false
     t.integer "days", null: false
-    t.string "prefecture", null: false
     t.integer "price", null: false
-    t.bigint "category_id"
+    t.integer "prefecture_id", null: false
+    t.bigint "category_id", null: false
     t.bigint "brand_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
