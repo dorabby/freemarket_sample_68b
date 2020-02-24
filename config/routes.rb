@@ -23,6 +23,8 @@ Rails.application.routes.draw do
       get 'index', to: 'purchase#index'
       post 'pay', to: 'purchase#pay'
       get 'done', to: 'purchase#done'
+    end
+  end
   resources :users, only: [:show,:edit,:update,:destroy]
   resources :items do
     collection do
@@ -31,5 +33,3 @@ Rails.application.routes.draw do
     end
   end
 end
-
-
