@@ -11,12 +11,16 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @item.images.new
+    @item.build_brand
     @category_parent_array = ["--"]
     Category.where(ancestry: nil).each do |parent|
       @category_parent_array << parent.name
     end
-    @item.images.new
-    @item.build_brand
+    respond_to do |format|
+      format.html
+      format.json
+     end
   end
 
     def get_category_children
@@ -29,9 +33,8 @@ class ItemsController < ApplicationController
 
 
   def create
-    binding.pry
     @item = Item.new(item_params)
-    if @item.save!
+    if @item.save
       redirect_to root_path
     else
       redirect_to new_item_path
@@ -64,7 +67,7 @@ class ItemsController < ApplicationController
 
 
   def item_params
-    params.require(:item).permit(:name,:description,:price,:condition,:derivery_chage,:days,:prefecture_id,:category,brand_attributes: [:id, :name],images_attributes:[:id,:_destroy,:image]).merge(saler_id: current_user.id,buyer_id: nil)
+    params.require(:item).permit(:name,:description,:category_id,:price,:condition,:derivery_charge,:days,:prefecture_id,brand_attributes: [:id, :name],images_attributes:[:id,:_destroy,:image]).merge(saler_id: current_user.id,buyer_id: nil)
   end
 
   def set_item

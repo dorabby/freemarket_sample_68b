@@ -1,6 +1,6 @@
 .new-header
   = link_to root_path do
-    = image_tag src="/assets/logo.png",class:"item-img" 
+    = image_tag ("/assets/logo.png"),class:"item-img" 
 
 
 .new-body
@@ -36,12 +36,12 @@
         .form-box
           .listing-form-box
             .listing-product-detail__category
-              = f.label 'カテゴリー', class: 'label'
+              = f.label 'カテゴリー', class: 'listing-default__label'
               %span.required 必須
               .listing-select-wrapper
                 .listing-select-wrapper__box
-                  = f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
-
+                  = f.select :category_id, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+                  -# = f.select :category_id, options_for_select(@category_parent_array),{}, {class: 'listing-select-wrapper__box--select', id:'parent_category'}
           .form-box__form
             = f.fields_for :brand do |brand|
               = brand.label "ブランド"
@@ -58,7 +58,7 @@
           .form-box__form
             %label 配送料の負担 
             %span.required 必須
-          = f.select :derivery_chage, [["送料込み（出品者負担）",1],["着払い（購入者負担）",2]], {prompt: "--"},class:"form"
+          = f.select :derivery_charge, [["送料込み（出品者負担）",1],["着払い（購入者負担）",2]], {prompt: "--"},class:"form"
           .form-box__form
             %label 発送元の地域
             %span.required 必須
@@ -94,6 +94,6 @@
         = link_to "特定商取引に関する表記"
   .fooder-logo
     = link_to root_path do
-      = image_tag src="/assets/logo.png",class:"item-img" 
+      = image_tag ("/assets/logo.png"),class:"item-img" 
     %p © FURIMA, Inc.
 
