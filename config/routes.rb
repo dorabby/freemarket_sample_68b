@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'card/new'
   get 'card/show'
   devise_for :users, controllers: {
-    registrations: 'users/registrations',
+    registrations: 'users/registrations'
   }
   devise_scope :user do
     get 'addresses', to: 'users/registrations#new_address'
@@ -23,6 +23,13 @@ Rails.application.routes.draw do
       get 'index', to: 'purchase#index'
       post 'pay', to: 'purchase#pay'
       get 'done', to: 'purchase#done'
+  resources :users, only: [:show,:edit,:update,:destroy]
+  resources :items do
+    collection do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren',defaults: { format: 'json' }
     end
   end
 end
+
+

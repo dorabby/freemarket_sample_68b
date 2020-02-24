@@ -1,16 +1,28 @@
 .new-header
-  = image_tag src="/assets/logo.png",class:"item-img" 
+  = link_to root_path do
+    = image_tag ("/assets/logo.png"),class:"item-img" 
+
+
 .new-body
-  .form-box
-    %h2
-      商品の情報を入力
-    = form_for @item do |f|
+  %section.form-box
+    = form_with model:@item,local:true do |f|
+      %h2
+        商品の情報を入力
       .item__image
-        %label 出品画像
-        %span.required 必須
-        =f.fields_for :images do |i|
-          = i.file_field :image
-        最大4枚までアップロードできます
+        .form-box__form__upload
+          %label.form-box__form__upload 出品画像
+          %span.required 必須
+          %p 最大4枚までアップロードできます
+          #image-box-1
+            .item-num-0#image-box__container
+              = f.fields_for :images do |i|
+                .input-area
+                  = i.file_field :image, type: 'file', name: "item[images_attributes][][image]", value:"", style: "display:none", id:"img-file"
+                  %label{for: "img-file"}
+                    = icon('fa','camera')
+                    %p ドラックアンドドロップ
+                    %p またはクリックしてファイルをアップロード
+
       .item-main
         %label 商品名
         %span.required 必須
@@ -22,29 +34,34 @@
       .item-form
         %h3.sub-head 商品の詳細
         .form-box
+          .listing-form-box
+            .listing-product-detail__category
+              = f.label 'カテゴリー', class: 'listing-default__label'
+              %span.required 必須
+              .listing-select-wrapper
+                .listing-select-wrapper__box
+                  = f.select :category_id, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
           .form-box__form
-            %label カテゴリー
-            %span.required 必須
-          = f.select :category,[["変更予定",1]], {prompt: "--"},class:"form"
-          .form-box__form
-            %label ブランド 
-            %span.brand-required 任意
-          = f.text_field :brand,class:"form"
+            = f.fields_for :brand do |brand|
+              = brand.label "ブランド"
+              %span.brand-required 任意
+              %div
+                = brand.text_field :name, placeholder: "例）シャネル", value: "",class:"form"
           .form-box__form
             %label 商品の状態
             %span.required 必須
-          = f.select :condition, ["新品・未使用", "未使用に近い", "目立った傷や汚れなし", "やや傷や汚れあり", "傷や汚れあり", "全体的に状態が悪い"], {prompt: "--"},class:"form"
+            = f.select :condition, ["新品・未使用", "未使用に近い", "目立った傷や汚れなし", "やや傷や汚れあり", "傷や汚れあり", "全体的に状態が悪い"], {prompt: "--"},class:"form"
       .item-form
         %h3.sub-head 配送
         .form-box
           .form-box__form
             %label 配送料の負担 
             %span.required 必須
-          = f.select :derivery_chage, [["送料込み（出品者負担）",1],["着払い（購入者負担）",2]], {prompt: "--"},class:"form"
+          = f.select :derivery_charge, [["送料込み（出品者負担）",1],["着払い（購入者負担）",2]], {prompt: "--"},class:"form"
           .form-box__form
             %label 発送元の地域
             %span.required 必須
-          = f.text_field :prefecture,class:"form"
+          = f.collection_select :prefecture_id, Prefecture.all, :id, :name,{prompt: "--"},class:"form"
           .form-box__form
             %label 発送までの日数
             %span.required 必須
@@ -56,10 +73,7 @@
             %label 価格
             %span.required 必須
             = f.number_field :price, placeholder: "例）300",class:"form"
-            .price-box__price
-              販売手数料(10%)
-            .price-box_commission
-              販売利益
+
       .form-foot
         %p 禁止されている出品、行為を必ずご確認ください。
         またブランド品でシリアルナンバー等がある場合はご記載ください。偽ブランドの販売は犯罪であり処罰される可能性があります。また、出品をもちまして加盟店規約に同意したことになります。
@@ -78,6 +92,7 @@
         %li
         = link_to "特定商取引に関する表記"
   .fooder-logo
-    = image_tag src="/assets/logo.png",class:"item-img" 
+    = link_to root_path do
+      = image_tag ("/assets/logo.png"),class:"item-img" 
     %p © FURIMA, Inc.
 

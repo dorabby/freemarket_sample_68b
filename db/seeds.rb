@@ -40,6 +40,9 @@ lady_18.children.create([{name: "トップス"},{name: "アウター"},{name: "�
 lady_19 = lady.children.create(name: "その他")
 lady_19.children.create([{name: "コスプレ"},{name: "下着"},{name: "その他"}])
 
+
+
+
 # メンズ
 men = Category.create(name: "メンズ")
 men_1 = men.children.create(name: "トップス")
@@ -70,6 +73,9 @@ men_13 = men.children.create(name: "アンダーウェア")
 men_13.children.create([{name: "トランクス"},{name: "ボクサーパンツ"},{name: "その他"}])
 men_14 = men.children.create(name: "その他")
 men_14.children.create([{name: "すべて"}])
+
+
+
 
 # ベビー・キッズ
 baby_kids = Category.create(name: "ベビー・キッズ")
@@ -133,6 +139,7 @@ interior_residence_accessory_12.children.create([{name: "正月"},{name: "成人
 interior_residence_accessory_13 = interior_residence_accessory.children.create(name: "その他")
 interior_residence_accessory_13.children.create([{name: "すべて"}])
 
+
 # 本・音楽・ゲーム
 book_music_game = Category.create(name: "本・音楽・ゲーム")
 book_music_game_1 = book_music_game.children.create(name: "本")
@@ -149,6 +156,7 @@ book_music_game_6 = book_music_game.children.create(name: "レコード")
 book_music_game_6.children.create([{name: "邦楽"},{name: "洋楽"},{name: "その他"}])
 book_music_game_7 = book_music_game.children.create(name: "テレビゲーム")
 book_music_game_7.children.create([{name: "家庭用ゲーム本体"},{name: "家庭用ゲームソフト"},{name: "携帯用ゲーム本体"},{name: "携帯用ゲームソフト"},{name: "PCゲーム"},{name: "その他"}])
+
 
 # おもちゃ・ホビー・グッズ
 toy_hobby_goods = Category.create(name: "おもちゃ・ホビー・グッズ")
@@ -175,6 +183,8 @@ toy_hobby_goods_10.children.create([{name: "画材"},{name: "額縁"},{name: "�
 toy_hobby_goods_11 = toy_hobby_goods.children.create(name: "その他")
 toy_hobby_goods_11.children.create([{name: "トランプ/UNO"},{name: "カルタ/百人一首"},{name: "ダーツ"},{name: "ビリヤード"},{name: "麻雀"},{name: "パズル/ジグソーパズル"},{name: "囲碁/将棋"},{name: "オセロ/チェス"},{name: "人生ゲーム"},{name: "野球/サッカーゲーム"},{name: "スポーツ"},{name: "三輪車/乗り物"},{name: "ヨーヨー"},{name: "模型製作用品"},{name: "鉄道"},{name: "航空機"},{name: "アマチュア無線"},{name: "パチンコ/パチスロ"},{name: "その他"}])
 
+
+
 # コスメ・香水・美容
 cosme_perfume_beauty = Category.create(name: "コスメ・香水・美容")
 cosme_perfume_beauty_1 = cosme_perfume_beauty.children.create(name: "ベースメイク")
@@ -200,6 +210,7 @@ cosme_perfume_beauty_10.children.create([{name: "ダイエット食品"},{name: 
 cosme_perfume_beauty_11 = cosme_perfume_beauty.children.create(name: "その他")
 cosme_perfume_beauty_11.children.create([{name: "健康用品"},{name: "看護/介護用品"},{name: "救急/衛生用品"},{name: "その他"}])
 
+
 # 家電・スマホ・カメラ
 appliance_smartphone_camera = Category.create(name: "家電・スマホ・カメラ")
 appliance_smartphone_camera_1 = appliance_smartphone_camera.children.create(name: "スマートフォン/携帯電話")
@@ -222,6 +233,8 @@ appliance_smartphone_camera_9 = appliance_smartphone_camera.children.create(name
 appliance_smartphone_camera_9.children.create([{name: "冷蔵庫"},{name: "洗濯機"},{name: "炊飯器"},{name: "電子レンジ/オーブン"},{name: "調理機器"},{name: "アイロン"},{name: "掃除機"},{name: "エスプレッソマシン"},{name: "コーヒーメーカー"},{name: "衣類乾燥機"},{name: "その他"}])
 appliance_smartphone_camera_10 = appliance_smartphone_camera.children.create(name: "その他")
 appliance_smartphone_camera_10.children.create([{name: "その他"}])
+
+
 # スポーツ・レジャー
 sport_leisure = Category.create(name: "スポーツ・レジャー")
 sport_leisure_1 = sport_leisure.children.create(name: "ゴルフ")
@@ -249,6 +262,7 @@ sport_leisure_11.children.create([{name: "テント/タープ"},{name: "ライ�
 sport_leisure_12 = sport_leisure.children.create(name: "その他")
 sport_leisure_12.children.create([{name: "旅行用品"},{name: "その他"}])
 
+
 # ハンドメイド
 handmade = Category.create(name: "ハンドメイド")
 handmade_1 = handmade.children.create(name: "アクセサリー(女性用)")
@@ -269,6 +283,7 @@ handmade_8 = handmade.children.create(name: "二次創作物")
 handmade_8.children.create([{name: "Ingress"},{name: "クリエイターズ宇宙兄弟"},{name: "その他"},{name: "チケット"},{name: "すべて"}])
 handmade_9 = handmade.children.create(name: "その他")
 handmade_9.children.create([{name: "すべて"}])
+
 
 # チケット
 ticket = Category.create(name: "チケット")
@@ -327,3 +342,4 @@ others_8 = others.children.create(name: "事務/店舗用品")
 others_8.children.create([{name: "オフィス用品一般"},{name: "オフィス家具"},{name: "店舗用品"},{name: "OA機器"},{name: "ラッピング/包装"},{name: "その他"}])
 others_9 = others.children.create(name: "その他")
 others_9.children.create([{name: "すべて"}])
+
