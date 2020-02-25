@@ -1,12 +1,18 @@
 class ItemsController < ApplicationController
   before_action :move_to_root, except: [:index]
   before_action :set_item, only:[:destroy,:edit,:update]
+  before_action :set_image,only:[:show]
   def index
     @items = Item.includes(:images).order('created_at DESC')
   end
 
   def show
-    @items = Item.all
+    @items = Item.includes(:images)
+    @item = Item.find_by(params[:id])
+    @saler = User.find_by(id: @item.saler_id)
+    @brand = Brand.find_by(id: @item.brand_id)
+    @category = Category.find_by(id: @item.category_id)
+    @images = Image.where(item_id: @item.id)
   end
 
   def new
@@ -72,6 +78,10 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def set_image
+    @first_image = Image.find_by(params[:item_id])
   end
 
 
