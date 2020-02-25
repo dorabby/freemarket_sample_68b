@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   before_action :set_item, only:[:destroy,:edit,:update]
   before_action :set_image,only:[:show]
   def index
-    @items = Item.includes(:images).order('created_at DESC')
+    @items = Item.includes(:images).order('created_at DESC').limit(3)
   end
 
   def show
@@ -13,6 +13,7 @@ class ItemsController < ApplicationController
     @brand = Brand.find_by(id: @item.brand_id)
     @category = Category.find_by(id: @item.category_id)
     @images = Image.where(item_id: @item.id)
+
   end
 
   def new
@@ -49,18 +50,41 @@ class ItemsController < ApplicationController
 
 
   def edit
+    @item = Item.find(params[:id])
+    @brand = @item.brand_id
+    @grandchild = Category.find(@item.category_id)
+    @child = @grandchild.parent
+    @parent = @grandchild.parent.parent
+    @category_grandchild_array = ["--"]
+    Category.where(ancestry: @grandchild.ancestry).each do |grandchild|
+      @category_grandchild_array << grandchild.name
+    end
 
+    @category_child_array = ["--"]
+    Category.where(ancestry: @child.ancestry).each do |child|
+      @category_child_array << child.name
+    end
+
+    @category_parent_array = ["--"]
+    Category.where(ancestry: nil).each do |parent|
+      @category_parent_array << parent.name
+    end
+    @category = Category.find(@item.category_id)
+    @child_categories = Category.where('ancestry = ?', "#{@category.parent.ancestry}")
+    @grand_child = Category.where('ancestry = ?', "#{@category.ancestry}")
   end
 
   def update
+    @item = Item.find(params[:id])
     if @item.update(item_params)
-      redirect_to root_path
+      redirect_to root_path,notice: "登録した商品情報を変更しました"
     else
       render :edit
     end
   end
 
   def destroy
+    @item = Item.find(params[:id])
     @item.destroy
     redirect_to root_path
   end

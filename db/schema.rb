@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2020_02_24_060101) do
   end
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.text "image", null: false
+    t.text "image"
     t.bigint "item_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -65,8 +65,8 @@ ActiveRecord::Schema.define(version: 2020_02_24_060101) do
     t.bigint "buyer_id"
     t.string "description", null: false
     t.string "condition", null: false
-    t.integer "derivery_charge", null: false
-    t.integer "days", null: false
+    t.string "derivery_charge", null: false
+    t.string "days", null: false
     t.integer "price", null: false
     t.integer "prefecture_id", null: false
     t.bigint "category_id", null: false
