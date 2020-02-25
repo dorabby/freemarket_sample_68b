@@ -1,6 +1,6 @@
 .new-header
   = link_to root_path do
-    = image_tag ("logo.png"),class:"item-img" 
+    = image_tag ("/assets/logo.png"),class:"item-img" 
 
 
 .new-body
@@ -40,7 +40,18 @@
               %span.required 必須
               .listing-select-wrapper
                 .listing-select-wrapper__box
-                  = f.select :category_id, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+                  = f.select :category_id, options_for_select(@category_parent_array, selected: @parent.name), {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+              .listing-select-wrapper#children_wrapper   
+                .listing-select-wrapper__box
+                  %select{class: 'listing-select-wrapper__box--select', id: 'child_category'}
+                    %option{value: "--","data-category": "--"} --
+                    %option{value: "#{@child.id}","data-category": "#{@child.id}", selected: true} #{@child.name}
+                    - @child.siblings.each do |child|
+                      %option{value: "#{child.id}","data-category": "#{child.id}"} #{child.name}
+              .listing-select-wrapper#grandchildren_wrapper     
+                .listing-select-wrapper__box
+                  = f.collection_select(:category_id, @grand_child, :id, :name, {prompt: "--"}, {id: "grandchild_category"})
+
           .form-box__form
             = f.fields_for :brand do |brand|
               = brand.label "ブランド"
@@ -78,7 +89,7 @@
         %p 禁止されている出品、行為を必ずご確認ください。
         またブランド品でシリアルナンバー等がある場合はご記載ください。偽ブランドの販売は犯罪であり処罰される可能性があります。また、出品をもちまして加盟店規約に同意したことになります。
       .form-submit
-        = f.submit "出品する",class:"item-btn"
+        = f.submit "変更する",class:"item-btn"
       .return-btn
         = link_to  "もどる", root_path,class:"return"
 .new-footer
@@ -93,5 +104,5 @@
         = link_to "特定商取引に関する表記"
   .fooder-logo
     = link_to root_path do
-      = image_tag ("logo.png"),class:"item-img" 
+      = image_tag ("/assets/logo.png"),class:"item-img" 
     %p © FURIMA, Inc.

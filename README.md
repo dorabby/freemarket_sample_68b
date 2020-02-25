@@ -65,9 +65,9 @@
 |name|string|null: false,index|
 |description|string|null: false|
 |condition|string|null: false|
-|derivery_chage|integer|null: false|
-|days|integer|null: false|
-|prefecture|string|null: false|
+|derivery_chage|string|null: false|
+|days|string|null: false|
+|prefecture|integer|null: false|
 |price|integer|null: false|
 |category|references|null: false, foreign_key|
 |brand|references|foreign_key|
