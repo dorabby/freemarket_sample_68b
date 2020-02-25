@@ -1,0 +1,27 @@
+-# .image
+-#   .image__main
+-#     = image_tag @first_image.image.url ,class:"item_detail__body__main-image"
+-#   .image__sub
+-#     - @images.each do |image|
+-#       .image__sub__thumb
+-#         = image_tag image.image.url ,class:"item_detail__body__main-image"
+
+
+
+
+
+
+.item_detail__body
+  %ul
+    %li
+      = image_tag @first_image.image.url,class:"item_detail__body__main-image"
+      -# 'a007.png', class: 'item_detail__body__main-image'
+      - @images.each do |image|
+        %ul.item_detail__body__imagelist
+          %li
+            = image_tag image.image.url,class:"item_detail__body__sub-image"
+        -#   = image_tag 'a007.png', class: 'item_detail__body__sub-image'
+        -# %li
+        -#   = image_tag 'a007.png', class: 'item_detail__body__sub-image'
+        -# %li
+        -#   = image_tag 'a007.png', class: 'item_detail__body__sub-image'
