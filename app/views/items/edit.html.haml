@@ -65,7 +65,7 @@
             = f.label "ブランド"
             %span.brand-required 任意
             %div
-              = f.collection_select :brand_id, Brand.all, :id, :name,{prompt: "--"}
+              = f.collection_select :brand_id, Brand.all, :id, :name,{include_blank: "--"}
           .form-box__form
             %label 商品の状態
             %span.required 必須

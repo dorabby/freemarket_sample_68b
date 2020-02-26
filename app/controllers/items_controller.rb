@@ -48,7 +48,6 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
-    @brand = Brand.find_by(id: @item.brand_id)
     @grandchild = Category.find(@item.category_id)
     @child = @grandchild.parent
     @parent = @grandchild.parent.parent
