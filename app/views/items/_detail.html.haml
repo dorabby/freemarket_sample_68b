@@ -28,15 +28,10 @@
                 %th カテゴリー
                 %td
                   = link_to @category.root.name
-                  -# %a(href="#") 親カテゴリーを表示してリンクを飛ばす
                   %br/
                   = link_to @category.parent.name
-                  -# "子カテゴリーを表示してリンクを飛ばす","#"
-                  -# %a(href="#") 子カテゴリーを表示してリンクを飛ばす
                   %br/
                   = link_to @category.name
-                  -# "孫カテゴリーを表示してリンクを飛ばす","#"
-                  -# %a(href="#") 孫カテゴリーを表示してリンクを飛ばす
                   %br/
               %tr
                 %th ブランド
@@ -65,7 +60,6 @@
                 お気に入り 0
             %ul.option
               %li.option_area__btn--bad
-                -# %a(href="#")
                 %i.fa.fa-flag
                 = link_to "不適切な商品の通報","#"
         .comment_area
@@ -81,12 +75,8 @@
           %li
             %span 
               = link_to "前の商品","#"
-              -# %a(href="#") 前の商品
           %li
             %span 
               = link_to "後ろの商品","#"
-              -# %a(href="#") 後ろの商品
         %span.see_more
           = link_to "選択したカテゴリをもっと見る","#"
-          -# %a(href="#")選択したカテゴリをもっと見る
-
