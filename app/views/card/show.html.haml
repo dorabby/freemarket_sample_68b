@@ -1,10 +1,26 @@
-%label 登録クレジットカード情報
-%br
-= "**** **** **** " + @default_card_information.last4
-%br
-- exp_month = @default_card_information.exp_month.to_s
-- exp_year = @default_card_information.exp_year.to_s.slice(2,3)
-= exp_month + " / " + exp_year
-= form_tag(delete_card_index_path, method: :post, id: 'charge-form',  name: "inputForm") do
-  %input{ type: "hidden", name: "card_id", value: "" }
-  %button 削除する
+.mycard_main
+  %h2.mycard_header
+    支払い方法
+  .card_list
+    .card_list__content
+      %section.card_section
+        %label クレジットカード一覧
+        %br
+        .card_list__container
+          .card_list__container__info
+          = image_tag "cardlogo/#{@card_image}", alt:'master-card', class: "brand_image"
+          .card_list__container__number
+            = "**** **** **** " + @default_card_information.last4
+            %br
+          .card_list__container__exp
+            - exp_month = @default_card_information.exp_month.to_s
+            - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+            = exp_month + " / " + exp_year
+            = form_tag(delete_card_index_path, method: :post, id: 'charge-form',  name: "inputForm") do
+              %input{ type: "hidden", name: "card_id", value: "" }
+                %button.destroy-btn 削除する
+    
+    %p.payment_about
+      %span
+      = link_to '支払い方法について', root_path, class:'payment_info'
+      = fa_icon 'chevron-right'

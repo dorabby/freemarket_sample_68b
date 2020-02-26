@@ -33,17 +33,33 @@ class CardController < ApplicationController
       customer.delete
       card.delete
     end
-      redirect_to action: "new"
+      redirect_to action: "show"
   end
 
   def show
     card = Card.where(user_id: current_user.id).first
     if card.blank?
-      redirect_to action: "new"
+      redirect_to action: "payment"
     else
       Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
       customer = Payjp::Customer.retrieve(card.customer_id)
       @default_card_information = customer.cards.retrieve(card.card_id)
+      @card_brand = @default_card_information.brand
+
+      case @card_brand
+      when "Visa"
+        @card_image = "Visa.png"
+      when "JCB"
+        @card_image = "jcb.svg"
+      when "MasterCard"
+        @card_image = "Master-card.png"
+      when "American Express"
+        @card_image = "American_Express.png"
+      when "Diners Club"
+        @card_image = "DinersClub.png"
+      when "Discover"
+        @card_image = "Discover.png"
+      end
     end
   end
 end
