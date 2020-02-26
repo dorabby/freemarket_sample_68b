@@ -1,11 +1,12 @@
 class Item < ApplicationRecord
   # has_many  :comments,dependent: :destroy
+  # has_many  :likes,dependent: :destroy
   has_many  :images, dependent: :destroy
   validates :images, presence: true,length: { minimum: 1, maximum: 5}
   accepts_nested_attributes_for :images,allow_destroy: true
 
   belongs_to :brand, optional: true
-  has_many  :likes,dependent: :destroy
+
   belongs_to :saler, class_name: "User", foreign_key: "saler_id"
   belongs_to :buyer, class_name: "User", foreign_key: "buyer_id", optional: true
   belongs_to :category
