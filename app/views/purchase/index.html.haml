@@ -10,11 +10,13 @@
         .buy_content_inner
           .buy_item_box
             %h3.buy_item_image
-              = image_tag("pict-reason-01.jpg")
+              = image_tag @images[0].image.url
             .buy-item-detail
-              %p.buy-item-name 携帯と手
+              %p.buy-item-name
+                = @item.name
               %p.buy-price-ja.bold
-                %span 3000
+                %span 
+                = @item.price
                 %span.item-shipping-fee (税込)送料込み
       %section.buy_content.buy_item          
         .buy_content_inner
@@ -23,7 +25,8 @@
               %li.buy_price_row.buy_you_pay.bold
                 .buy_price_cell.buy_price_cell_label 支払い金額
                 .buy_price_cell
-                  %span.data_buy_pay ¥3,000
+                  %span.data_buy_pay
+                  = "¥#{@item.price}"
             %ul.buy_accordion.buy_not_have_point
               %li.accrodion_parent
                 .checkbox_default.buy_use_point
@@ -41,7 +44,7 @@
                   %span.buy_register_text 
                     - if @default_card_information.blank?
                       登録してください
-                      %br /
+                      %br/
                     - else
                       クレジットカード
                       %br/
@@ -59,15 +62,20 @@
                     %span 変更する
                 %address.buy_user_info_text
                   %p
-                    〒570-0046  
+                    = "〒#{@address.potalcode}"
                     %br/ 
-                    大阪府 守口市 南寺方北通2丁目2番21号
+                    = @address.prefectures
+                    %span
+                    = @address.municipalities
+                    %span
+                    = @address.address
                     %br/
-                    大林 海斗
+                    = @address.building_name
+                    %br/
+                    = @user.name
             %section.buy_content.buy_user_info
               = form_tag(action: :pay, method: :post) do
                 %button(type="submit" class="btn_default btn_red bold") 購入する
-              -# %button(type="submit" class="btn_default btn_red bold") 購入する
   .new-footer
     .fooder-box
       .fooder-box__teams

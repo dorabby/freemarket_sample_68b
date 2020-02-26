@@ -17,6 +17,8 @@
               %span 送料込み
           .item_detail__name--detail
             = @item.name
+          = link_to item_purchase_index_path(@item) do
+            %spn 購入画面へ
           %table
             %tbody
               %tr
