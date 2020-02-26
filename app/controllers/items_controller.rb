@@ -73,7 +73,7 @@ class ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     if @item.update(item_params)
-      redirect_to root_path,notice: "登録した商品情報を変更しました"
+      redirect_to root_path,data: {confirm:"登録した商品情報を変更しました"}
     else
       render :edit
     end
@@ -81,11 +81,12 @@ class ItemsController < ApplicationController
 
   def destroy
     @item = Item.find(params[:id])
-    @item.destroy
-    redirect_to root_path
+    if @item.destroy
+      redirect_to root_path
+    else
+      redirect_to item_path(@item)
+    end
   end
-
-
 
 
   private
