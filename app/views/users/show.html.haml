@@ -37,7 +37,7 @@
             %li
               =link_to "発送元・お届け先住所変更","#"
             %li
-              =link_to "支払い方法",new_card_path(current_user)
+              =link_to "支払い方法",card_index_path(current_user)
             %li 
               =link_to "ログアウト", destroy_user_session_path, method: :delete
 
