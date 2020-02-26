@@ -13,15 +13,24 @@
           %label.form-box__form__upload 出品画像
           %span.required 必須
           %p 最大4枚までアップロードできます
-          #image-box-1
-            .item-num-0#image-box__container
-              = f.fields_for :images do |i|
-                .input-area
-                  = i.file_field :image, type: 'file', name: "item[images_attributes][][image]", value:"", style: "display:none", id:"img-file"
-                  %label{for: "img-file"}
-                    = icon('fa','camera')
-                    %p ドラックアンドドロップ
-                    %p またはクリックしてファイルをアップロード
+          #image-box2
+            #previews2
+              - if @item.persisted?
+                - @item.images.each_with_index do |image, i|
+                  %li.adsaf
+                    = image_tag image.image.url, data: { index: i }, class: "edit_img_#{i}",id: :pre_img
+                    .js-remove{data: { index: i }, name: "[edit_remove][#{i}]"} 削除
+            = f.fields_for :images do |image|
+              %label.js-file_group3{"data-index": "#{image.index}", id: "dropArea2"}
+                = image.file_field :image, class: 'js-file2'
+                = image.hidden_field :_destroy, data:{ index: image.index }, value: 0, class: "delete_img_#{image.index}"
+            - if @item.persisted?
+              .js-file_group3{"data-index": "#{@item.images.count}", style: 'display: none'}
+                = file_field_tag :image, name: "item[images_attributes][#{@item.images.count}][image]", class: 'js-file2', id: "img-file"
+            %pre.click
+              = icon('fa','camera')
+              :preserve
+                クリックしてファイルをアップロード
 
       .item-main
         %label 商品名
@@ -53,11 +62,10 @@
                   = f.collection_select(:category_id, @grand_child, :id, :name, {prompt: "--"}, {id: "grandchild_category"})
 
           .form-box__form
-            = f.fields_for :brand do |brand|
-              = brand.label "ブランド"
-              %span.brand-required 任意
-              %div
-                = brand.text_field :name, placeholder: "例）シャネル", value: "",class:"form"
+            = f.label "ブランド"
+            %span.brand-required 任意
+            %div
+              = f.collection_select :brand_id, Brand.all, :id, :name,{prompt: "--"}
           .form-box__form
             %label 商品の状態
             %span.required 必須
