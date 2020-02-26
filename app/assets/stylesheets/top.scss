@@ -461,6 +461,7 @@
             background-color: white;
             color: #333;
             padding: 16px;
+            height: 100px;
             .name{
               line-height: 1.5;
               font-size: 16px;
@@ -480,6 +481,26 @@
               }
               p{
                 font-size: 10px;
+              }
+            }
+            .items-box_photo__sold{
+              width: 0;
+              height: 0;
+              border-top: 60px solid #ea352d ;
+              border-right: 60px solid transparent;
+              border-bottom: 60px solid transparent;
+              border-left: 60px solid #ea352d ;
+              z-index:100;
+              position: relative;
+              top: -233px;
+              right: 16px;
+              &__inner{
+                transform: rotate(-45deg);
+                font-size: 28px;
+                margin:-35px 0px 0px -55px;
+                color: #fff;
+                letter-spacing: 2px;
+                font-weight: 600;
               }
             }
           }
