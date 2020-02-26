@@ -43,7 +43,6 @@
       %span 月
       %select#exp_year.exp_input{name: "exp_year", type: "text"}
         %option{value: ""} --
-        %option{value: "2019"}19
         %option{value: "2020"}20
         %option{value: "2021"}21
         %option{value: "2022"}22
@@ -54,9 +53,10 @@
         %option{value: "2027"}27
         %option{value: "2028"}28
         %option{value: "2029"}29
+        %option{value: "2030"}30
       %span 年
       %br
-    .form__upper__group
+    .form__upper__group#secret_code
       %label セキュリティコード
       %span.form-require 必須
       = text_field_tag "cvc", "", class: "cvc", placeholder: "カード背面3~4桁の番号", maxlength: "4", id: "cvc"
@@ -64,7 +64,7 @@
       %p.about
         = fa_icon 'question-circle'
         %span
-        = link_to 'カード裏面の番号とは？', root_path, class:'about__registered'
-    .form__upper__group
+        = link_to 'カード裏面の番号とは？', root_path, class:'about__cvc'
+    .form__upper__group__submit
       #card_token
-      = submit_tag "追加する", id: "token_submit"
+      = submit_tag "登録する", id: "token_submit", class: "submit-btn"
