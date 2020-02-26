@@ -11,7 +11,7 @@
           .item_detail__price
             .item_detail__price__price--money
               %span 
-                = @item.price
+                = "#{@item.price} 円"
             .item_detail__price__price--detail
               %span （税込）
               %span 送料込み
@@ -19,6 +19,11 @@
             = @item.name
           = link_to item_purchase_index_path(@item) do
             %spn 購入画面へ
+          .item_detail__name--detail
+            = link_to edit_item_path(@item) do
+              %spn 編集
+          .item_detail__name--detail
+            = link_to "削除",item_path(@item),method: :delete,data: { confirm: "本当に削除しますか？" }
           %table
             %tbody
               %tr
@@ -38,7 +43,8 @@
               %tr
                 %th ブランド
                 %td
-                  = @brand.name
+                  -if @item.brand_id.present?
+                    = @brand.name
               %tr
                 %th 商品の状態
                 %td 
