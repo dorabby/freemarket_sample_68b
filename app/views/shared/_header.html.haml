@@ -9,17 +9,42 @@
       .header_box__main__btn
         %input{type: "submit",class: "send"}/
         = image_tag("icon-search 1.png")
-    .header_box__sub
-      .header_box__sub__left-list
-        .header_box__sub__left-list__btn
-          =link_to "カテゴリー","#"
-          =link_to "ブランド","#"
-      .header_box__sub__light-list
+    .menu
+      %ul.left-list
+        %li.first
+          = link_to "カテゴリー","#", id:"link"
+          .tree.displaynone
+            %ul.categorytree
+              %li.categorytree__item 
+                = link_to "レディース","#",id:"1"
+              %li.categorytree__item
+                = link_to "メンズ", "#",id:"2"
+              %li.categorytree__item 
+                = link_to "インテリア・住まい・小物", "#",id:"3"
+              %li.categorytree__item 
+                = link_to "本・音楽・ゲーム", "#",id:"4"
+              %li.categorytree__item 
+                = link_to "おもちゃ・ホビー・グッズ", "#",id:"5"
+              %li.categorytree__item 
+                = link_to "コスメ・香水・美容", "#",id:"6"
+              %li.categorytree__item 
+                = link_to "家電・スマホ・カメラ", "#",id:"7"
+              %li.categorytree__item
+                = link_to "スポーツ・レジャー", "#",id:"8"
+              %li.categorytree__item 
+                = link_to "ハンドメイド", "#",id:"9"
+              %li.categorytree__item 
+                = link_to "チケット", "#",id:"10"
+              %li.categorytree__item 
+                = link_to "自動車・オートバイ", "#",id:"11"
+              %li.categorytree__item 
+                = link_to "その他", "#",id:"12"
+        %li.second
+          = link_to "ブランド","#", class:"link"
+      .light-list
         -if user_signed_in?
           =link_to "ログアウト", destroy_user_session_path, method: :delete
           =link_to "マイページ", user_path(current_user)
         -else 
           =link_to "ログイン", new_user_session_path
           =link_to "新規会員登録", new_user_registration_path
-            
-          
