@@ -17,13 +17,16 @@
               %span 送料込み
           .item_detail__name--detail
             = @item.name
-          = link_to item_purchase_index_path(@item) do
-            %spn 購入画面へ
-          .item_detail__name--detail
-            = link_to edit_item_path(@item) do
-              %spn 編集
-          .item_detail__name--detail
-            = link_to "削除",item_path(@item),method: :delete,data: { confirm: "本当に削除しますか？" }
+          .item_detail__btn__box
+          - if user_signed_in? && current_user.id ==@item.saler_id
+            = link_to "削除", item_path(@item.id), method: :delete,class:"item-detail__delete__btn",data: { confirm: "本当に削除しますか？" }
+            = link_to "編集", edit_item_path(@item.id),class:"item-detail__edit__btn"
+
+          - if user_signed_in? && current_user.id !=@item.saler_id
+            = link_to "購入画面へ",item_purchase_index_path(@item),class:"product-purchase__btn"
+
+          - if @item.buyer_id.present? 
+            = link_to "売り切れました",root_path,class:"disabled-button bold"
           %table
             %tbody
               %tr
