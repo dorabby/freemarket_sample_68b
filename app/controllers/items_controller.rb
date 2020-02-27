@@ -4,6 +4,12 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.includes(:images).order('created_at DESC').limit(3)
+    @q     = @items.ransack(params[:q])
+    @items = @q.result(distinct: true)
+  end
+
+  def search
+    
   end
 
   def show

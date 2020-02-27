@@ -5,9 +5,13 @@
         = link_to root_path do
           = image_tag("logo.png")
       .header_box__main__search
+        = search_form_for @q do |f|
+          = f.search_field :name_cont,placeholder: "キーワードから探す", class: "box"
+          = f.submit "検索", class: "btn"
+          = icon('fa', 'search',class: 'search-icon')
         %input{placeholder: " キーワードから探す", type: "text"}/
       .header_box__main__btn
-        %input{type: "submit",class: "send"}/
+        %input{type: "submit",class: "send"}
         = image_tag("icon-search 1.png")
     .menu
       %ul.left-list
