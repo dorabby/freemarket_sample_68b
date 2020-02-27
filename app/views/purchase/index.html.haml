@@ -37,7 +37,7 @@
               .buy_content_inner
                 .clearfix
                   %h3.left 支払い方法
-                  %a(href="#" class="right buy_user-info_fix")
+                  = link_to card_index_path, class: "right buy_user-info_fix" do
                     %span 変更する
                 .buy_user_info_text
                   %i.icon_plus_circle  

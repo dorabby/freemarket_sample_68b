@@ -20,7 +20,7 @@
             %li
               =link_to "いいね！一覧","#"
             %li
-              =link_to "出品する","#"
+              =link_to "出品する", new_item_path
             %li
               =link_to "出品した商品-出品中","#"
             %li
@@ -49,23 +49,54 @@
             =link_to current_user.nick_name, user_path(current_user)
           .icon-box
             .icon-box__list
-              %p 評価
-              =link_to "num"
+              =link_to "評価"
             .icon-box__list
-              %p 出品数
-              =link_to "num"
+              =link_to "出品数"
 
       .right-box__list
         .list-content
           .item-list
-            %h2 購入した商品
-        .item-tab
-          .item-tab__left
-            =link_to "取引中","#"
-          .item-tab__right
-            =link_to "過去の取引","#"
-        .item-content
-          過去の取引がありません
-
+            %h2 出品した商品
+        
+          .item-content
+            .pickup-boxs
+              .pickup-lists
+                -@items.each do |item|
+                  .pickup-list
+                    = link_to image_tag(item.images[0].image.url, class: "pickup-list--image"), item_path(item.id)
+                    .pickup-list--body
+                      %h3.name
+                      = item.name
+                      .details
+                        %ul
+                          %li
+                            = "#{item.price}円"
+                          %li
+                            = icon('fa','star',class: 'icon')
+                            0
+                        %p (税込)
+                      -if item.buyer_id.present? 
+                        .items-box_photo__sold
+                          .items-box_photo__sold__inner
+                            SOLD
+            -# .pickup-lists
+            -#   -@items.each do |item|
+            -#     .pickup-list
+            -#       = link_to image_tag(item.images[0].image.url, class: "pickup-list--image")
+            -#       .pickup-list--body
+            -#         %h3.name
+            -#         = item.name
+            -#         .details
+            -#           %ul
+            -#             %li
+            -#             = "#{item.price}円"
+            -#             %li
+            -#             = icon('fa','star',class: 'icon')
+            -#             0
+            -#           %p (税込)
+            -#         -if item.buyer_id.present? 
+            -#           .items-box_photo__sold
+            -#             .items-box_photo__sold__inner
+            -#               SOLD
 = render "shared/footer"
 

@@ -17,7 +17,6 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.images.new
-    @item.build_brand
     @category_parent_array = ["--"]
     Category.where(ancestry: nil).each do |parent|
       @category_parent_array << parent.name
@@ -49,7 +48,6 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
-    @brand = @item.brand_id
     @grandchild = Category.find(@item.category_id)
     @child = @grandchild.parent
     @parent = @grandchild.parent.parent
@@ -75,27 +73,26 @@ class ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     if @item.update(item_params)
-      redirect_to root_path,notice: "登録した商品情報を変更しました"
+      redirect_to root_path,data: {confirm:"登録した商品情報を変更しました"}
     else
       render :edit
     end
   end
 
   def destroy
-    @item = Item.find(params[:id])
-    @item.destroy
-    redirect_to root_path
+    item = Item.find(params[:id])
+    if item.destroy
+      redirect_to root_path
+    else
+      redirect_to item_path(@item)
+    end
   end
-
-
 
 
   private
 
-
-
   def item_params
-    params.require(:item).permit(:name,:description,:category_id,:price,:condition,:derivery_charge,:days,:prefecture_id,brand_attributes: [:id, :name],images_attributes:[:id,:_destroy,:image]).merge(saler_id: current_user.id,buyer_id: nil)
+    params.require(:item).permit(:name,:description,:category_id,:price,:condition,:derivery_charge,:days,:prefecture_id,:brand_id,images_attributes:[:id,:_destroy,:image]).merge(saler_id: current_user.id,buyer_id: nil)
   end
 
   def set_item
