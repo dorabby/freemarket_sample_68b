@@ -1,11 +1,16 @@
 class ItemsController < ApplicationController
   before_action :move_to_root, except: [:index]
-  before_action :set_item, only:[:destroy,:edit,:update]
+  before_action :set_item, only:[:show,:destroy,:edit,:update]
   def index
     @items = Item.includes(:images).order('created_at DESC').limit(3)
   end
 
-
+  def show
+    @saler = User.find(@item.saler_id)
+    @brand = Brand.find(@item.brand_id)
+    @category = Category.find(@item.category_id)
+    @images = Image.where(item_id: @item.id)
+  end
 
   def new
     @item = Item.new
@@ -72,6 +77,13 @@ class ItemsController < ApplicationController
     end
   end
 
+  def destroy
+    if @item.destroy
+      redirect_to root_path
+    else
+      redirect_to item_path(@item)
+    end
+  end
 
   private
 
@@ -82,11 +94,6 @@ class ItemsController < ApplicationController
   def set_item
     @item = Item.find(params[:id])
   end
-
-  # def set_image
-  #   @first_image = Image.find_by(id: params[:id])
-  # end
-
 
   def move_to_root
     redirect_to action: :index unless user_signed_in?

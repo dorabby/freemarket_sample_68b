@@ -1,1 +1,102 @@
+.main-view
+  .detail-show
+    .left-content
+    .right-content
+      .top-content
+        .item-detail
+          %h2.item-detail__item_name
+            = @item.name
+          .item-detail__body
+            = render partial: "item_detail"
+          .item-detail__price
+            .item-detail__price__money
+              %span 
+                = "#{@item.price} 円"
+            .item-detail__price__detail
+              %span （税込）
+              %span 送料込み
+          .item-detail__name
+            = @item.name
 
+
+          %table
+            %tbody
+              %tr
+                %th 出品者
+
+                %td 
+                  = @saler.nick_name
+              %tr
+                %th カテゴリー
+                %td
+                  = link_to @category.root.name
+                  %br/
+                  = link_to @category.parent.name
+                  %br/
+                  = link_to @category.name
+                  %br/
+              %tr
+                %th ブランド
+                %td
+                  -if @item.brand_id.present?
+                    = @brand.name
+              %tr
+                %th 商品の状態
+                %td 
+                  = @item.condition
+              %tr
+                %th 配送料の負担
+                %td
+                  = @item.derivery_charge
+              %tr
+                %th 発送元の地域
+                %td
+                  = Prefecture.find(@item.prefecture_id).name
+              %tr
+                %th 発送日の目安
+                %td
+                  = @item.days
+
+          .option_area
+            %ul
+              %li.option_area__btn--like
+                %i.fa.fa-ster
+                お気に入り 0
+            %ul.option
+              %li.option_area__btn--bad
+                %i.fa.fa-flag
+                = link_to "不適切な商品の通報","#"
+
+          .purchase-box
+            - if @item.buyer_id.present? 
+              = link_to "売り切れました",root_path,class:"purchase-box__btn"
+
+            - if user_signed_in? && current_user.id !=@item.saler_id && @item.buyer_id.blank?
+              = link_to "購入画面へ",item_purchase_index_path(@item),class:"purchase-box__btn"
+
+          .item-link
+            .item-link__btn
+            - if user_signed_in? && current_user.id ==@item.saler_id && @item.buyer_id.blank? 
+              = link_to "削除", item_path(@item.id), method: :delete,class:"item-link__btn__delete",data: { confirm: "本当に削除しますか？" }
+              = link_to "編集", edit_item_path(@item.id),class:"item-link__btn__edit"
+            - if user_signed_in? && current_user.id ==@item.saler_id && @item.buyer_id.present? 
+              = link_to "削除", item_path(@item.id), method: :delete,class:"item-link__btn__delete",data: { confirm: "本当に削除しますか？" }
+
+        .comment-area
+          %ul.comment-contents
+          .form
+            %textarea.comment(name="comment" cols="81" rows="8")
+            %p.note-msg
+              相手のことを考え丁寧なコメントを心がけましよう。
+              %br/
+              不快な言葉遣いなどは利用制限や退会処分となることがあります。
+              %input.comment-btn(type="submit")
+        %ul.pagelink
+          %li
+            %span 
+              = link_to "前の商品","#"
+          %li
+            %span 
+              = link_to "後ろの商品","#"
+        %span.see_more
+          = link_to "選択したカテゴリをもっと見る","#"
