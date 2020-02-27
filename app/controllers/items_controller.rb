@@ -1,9 +1,7 @@
 class ItemsController < ApplicationController
   before_action :move_to_root, except: [:index]
   before_action :set_item, only:[:show,:destroy,:edit,:update]
-  def index
-    @items = Item.includes(:images).order('created_at DESC').limit(3)
-  end
+
 
   def show
     @saler = @item.saler
