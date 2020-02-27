@@ -5,14 +5,7 @@ class ItemsController < ApplicationController
     @items = Item.includes(:images).order('created_at DESC').limit(3)
   end
 
-  def show
-    @items = Item.includes(:images)
-    @item = Item.find_by(id: params[:id])
-    @saler = User.find_by(id: @item.saler_id)
-    @brand = Brand.find_by(id: @item.brand_id)
-    @category = Category.find_by(id: @item.category_id)
-    @images = Image.where(item_id: @item.id)
-  end
+
 
   def new
     @item = Item.new
@@ -76,15 +69,6 @@ class ItemsController < ApplicationController
       redirect_to root_path,data: {confirm:"登録した商品情報を変更しました"}
     else
       render :edit
-    end
-  end
-
-  def destroy
-    item = Item.find(params[:id])
-    if item.destroy
-      redirect_to root_path
-    else
-      redirect_to item_path(@item)
     end
   end
 
