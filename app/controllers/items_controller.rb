@@ -1,13 +1,11 @@
 class ItemsController < ApplicationController
   before_action :move_to_root, except: [:index]
-  before_action :set_item, only:[:destroy,:edit,:update]
+  before_action :set_item, only:[:show,:destroy,:edit,:update]
   def index
     @items = Item.includes(:images).order('created_at DESC').limit(3)
   end
 
   def show
-    @items = Item.includes(:images)
-    @item = Item.find(params[:id])
     @saler = User.find(@item.saler_id)
     @brand = Brand.find(@item.brand_id)
     @category = Category.find(@item.category_id)
@@ -80,8 +78,7 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    item = Item.find(params[:id])
-    if item.destroy
+    if @item.destroy
       redirect_to root_path
     else
       redirect_to item_path(@item)
