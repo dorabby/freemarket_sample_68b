@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @user = current_user
     @item = Item.where(saler_id: params[:id])
     @items = @item.includes(:images).order('created_at DESC')
-    
+
   end
 
   def edit

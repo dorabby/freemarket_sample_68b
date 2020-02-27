@@ -1,29 +1,24 @@
-.main_view
-  .detail_show
-    .left_content
-    .right_content
-      .top_content
-        .item_detail
-          %h2.item_detail__item_name
+.main-view
+  .detail-show
+    .left-content
+    .right-content
+      .top-content
+        .item-detail
+          %h2.item-detail__item_name
             = @item.name
-          .item_detail__body
+          .item-detail__body
             = render partial: "item_detail"
-          .item_detail__price
-            .item_detail__price__price--money
+          .item-detail__price
+            .item-detail__price__money
               %span 
                 = "#{@item.price} 円"
-            .item_detail__price__price--detail
+            .item-detail__price__detail
               %span （税込）
               %span 送料込み
-          .item_detail__name--detail
+          .item-detail__name
             = @item.name
-          = link_to item_purchase_index_path(@item) do
-            %spn 購入画面へ
-          .item_detail__name--detail
-            = link_to edit_item_path(@item) do
-              %spn 編集
-          .item_detail__name--detail
-            = link_to "削除",item_path(@item),method: :delete,data: { confirm: "本当に削除しますか？" }
+
+
           %table
             %tbody
               %tr
@@ -61,6 +56,7 @@
                 %th 発送日の目安
                 %td
                   = @item.days
+
           .option_area
             %ul
               %li.option_area__btn--like
@@ -70,15 +66,31 @@
               %li.option_area__btn--bad
                 %i.fa.fa-flag
                 = link_to "不適切な商品の通報","#"
-        .comment_area
-          %ul.comment_contents
+
+          .purchase-box
+            - if @item.buyer_id.present? 
+              = link_to "売り切れました",root_path,class:"purchase-box__btn"
+
+            - if user_signed_in? && current_user.id !=@item.saler_id && @item.buyer_id.blank?
+              = link_to "購入画面へ",item_purchase_index_path(@item),class:"purchase-box__btn"
+
+          .item-link
+            .item-link__btn
+            - if user_signed_in? && current_user.id ==@item.saler_id && @item.buyer_id.blank? 
+              = link_to "削除", item_path(@item.id), method: :delete,class:"item-link__btn__delete",data: { confirm: "本当に削除しますか？" }
+              = link_to "編集", edit_item_path(@item.id),class:"item-link__btn__edit"
+            - if user_signed_in? && current_user.id ==@item.saler_id && @item.buyer_id.present? 
+              = link_to "削除", item_path(@item.id), method: :delete,class:"item-link__btn__delete",data: { confirm: "本当に削除しますか？" }
+
+        .comment-area
+          %ul.comment-contents
           .form
-            %textarea(name="comment" cols="81" rows="8")
-            %p.note_msg
+            %textarea.comment(name="comment" cols="81" rows="8")
+            %p.note-msg
               相手のことを考え丁寧なコメントを心がけましよう。
               %br/
               不快な言葉遣いなどは利用制限や退会処分となることがあります。
-            %input(type="submit")
+              %input.comment-btn(type="submit")
         %ul.pagelink
           %li
             %span 
