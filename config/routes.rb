@@ -32,7 +32,10 @@ Rails.application.routes.draw do
       post 'delete', to: 'card#delete'
     end
   end
+
   
-  resources :users, only: [:show,:edit,:update,:destroy]
+  resources :users, only: [:show,:edit,:update,:destroy] 
+  resources :addresses, only: [:edit, :update] 
+  
   
 end
