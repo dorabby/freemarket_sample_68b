@@ -14,16 +14,19 @@
     }
   }
   .pickup-lists{
-    margin: 30px auto;
-    display: flex;
-    justify-content: space-around;
-    .pickup-list{
+      margin: 30px auto;
+      display: flex;
+      overflow-y: auto;
+      
+    .pickup-listed{
       width: 220px;
       display: inline-block;
+      padding-right: 10px;
       &--image{
-        background-color: #3ccace;
-        width: 220px;
+        // background-color: #3ccace;
+        width: auto;
         height: 150px;
+        
       }
       &--body{
         background-color: white;
