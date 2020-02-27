@@ -62,9 +62,9 @@
             .pickup-boxs
               .pickup-lists
                 -@items.each do |item|
-                  .pickup-list
-                    = link_to image_tag(item.images[0].image.url, class: "pickup-list--image"), item_path(item.id)
-                    .pickup-list--body
+                  .pickup-listed
+                    = link_to image_tag(item.images[0].image.url, class: "pickup-listed--image"), item_path(item.id)
+                    .pickup-listed--body
                       %h3.name
                       = item.name
                       .details

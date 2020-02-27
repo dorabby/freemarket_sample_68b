@@ -6,8 +6,8 @@ class UsersController < ApplicationController
   def show
     @user = current_user
     @item = Item.where(saler_id: params[:id])
-    @items = Item.includes(:images).order('created_at DESC').limit(3)
-    # @images = Image.where(item_id: @item.id)
+    @items = @item.includes(:images).order('created_at DESC')
+    
   end
 
   def edit
