@@ -20,6 +20,12 @@ set :keep_releases, 5
 
 set :linked_files, %w{config/master.key}
 
+after 'deploy:publishing', 'deploy:restart'
+namespace :deploy do
+
+ task :restart do
+   invoke 'unicorn:restart'
+ end
 
  desc 'upload master.key'
  task :upload do
@@ -44,11 +50,4 @@ set :default_env, {
   AWS_SECRET_ACCESS_KEY: ENV["AWS_SECRET_ACCESS_KEY"]
 }
 
-after 'deploy:publishing', 'deploy:restart'
-namespace :deploy do
-  task :restart do
-    invoke 'unicorn:restart'
-
 set :format_options, truncate: false
-  end
-end
