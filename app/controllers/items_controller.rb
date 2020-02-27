@@ -5,7 +5,14 @@ class ItemsController < ApplicationController
     @items = Item.includes(:images).order('created_at DESC').limit(3)
   end
 
-
+  def show
+    @items = Item.includes(:images)
+    @item = Item.find_by(id: params[:id])
+    @saler = User.find_by(id: @item.saler_id)
+    @brand = Brand.find_by(id: @item.brand_id)
+    @category = Category.find_by(id: @item.category_id)
+    @images = Image.where(item_id: @item.id)
+  end
 
   def new
     @item = Item.new
@@ -72,6 +79,14 @@ class ItemsController < ApplicationController
     end
   end
 
+  def destroy
+    item = Item.find(params[:id])
+    if item.destroy
+      redirect_to root_path
+    else
+      redirect_to item_path(@item)
+    end
+  end
 
   private
 
@@ -82,11 +97,6 @@ class ItemsController < ApplicationController
   def set_item
     @item = Item.find(params[:id])
   end
-
-  # def set_image
-  #   @first_image = Image.find_by(id: params[:id])
-  # end
-
 
   def move_to_root
     redirect_to action: :index unless user_signed_in?
