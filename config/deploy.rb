@@ -22,10 +22,12 @@ set :linked_files, %w{config/master.key}
 
 after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
+  task :restart do
+    invoke 'unicorn:restart'
 
- task :restart do
-   invoke 'unicorn:restart'
- end
+set :format_options, truncate: false
+  end
+end
 
  desc 'upload master.key'
  task :upload do
@@ -45,9 +47,8 @@ set :default_env, {
   rbenv_root: "/usr/local/rbenv",
   path: "/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH",
   BASIC_AUTH_USER: ENV["BASIC_AUTH_USER"],
-  BASIC_AUTH_PASSWORD: ENV["BASIC_AUTH_PASSWORD"]
-  AWS_ACCESS_KEY_ID: ENV["AWS_ACCESS_KEY_ID"],
+  BASIC_AUTH_PASSWORD: ENV["BASIC_AUTH_PASSWORD"],
+    AWS_ACCESS_KEY_ID: ENV["AWS_ACCESS_KEY_ID"],
   AWS_SECRET_ACCESS_KEY: ENV["AWS_SECRET_ACCESS_KEY"]
 }
-
-set :format_options, truncate: false
+end
