@@ -6,10 +6,10 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @saler = User.find(@item.saler_id)
-    @brand = Brand.find(@item.brand_id)
-    @category = Category.find(@item.category_id)
-    @images = Image.where(item_id: @item.id)
+    @saler = @item.saler
+    @brand = @item.brand
+    @category = @item.category
+    @images =  @item.images
   end
 
   def new
@@ -25,13 +25,13 @@ class ItemsController < ApplicationController
      end
   end
 
-    def get_category_children
-      @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
-   end
+  def get_category_children
+    @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
+  end
   
-   def get_category_grandchildren
-    @category_grandchildren = Category.find("#{params[:child_id]}").children
-   end
+  def get_category_grandchildren
+  @category_grandchildren = Category.find("#{params[:child_id]}").children
+  end
 
 
   def create
@@ -45,24 +45,24 @@ class ItemsController < ApplicationController
 
 
   def edit
-    @grandchild = Category.find(@item.category_id)
+    @grandchild = @item.category
     @child = @grandchild.parent
     @parent = @grandchild.parent.parent
     @category_grandchild_array = ["--"]
     Category.where(ancestry: @grandchild.ancestry).each do |grandchild|
       @category_grandchild_array << grandchild.name
-    end
+  end
 
-    @category_child_array = ["--"]
-    Category.where(ancestry: @child.ancestry).each do |child|
-      @category_child_array << child.name
-    end
+  @category_child_array = ["--"]
+  Category.where(ancestry: @child.ancestry).each do |child|
+    @category_child_array << child.name
+  end
 
-    @category_parent_array = ["--"]
-    Category.where(ancestry: nil).each do |parent|
-      @category_parent_array << parent.name
-    end
-    @category = Category.find(@item.category_id)
+  @category_parent_array = ["--"]
+  Category.where(ancestry: nil).each do |parent|
+    @category_parent_array << parent.name
+  end
+    @category = @item.category
     @child_categories = Category.where('ancestry = ?', "#{@category.parent.ancestry}")
     @grand_child = Category.where('ancestry = ?', "#{@category.ancestry}")
   end
