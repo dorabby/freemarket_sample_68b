@@ -5,11 +5,10 @@
         = link_to root_path do
           = image_tag("logo.png")
       .header_box__main__search
-        = form_with(url: search_items_path, local: true, method: :get, class: "mheader__main__upper__search") do |f|
-          = f.text_field :keyword, value: @search_params, placeholder: " 何かお探しですか？", class: "mheader__main__upper__search__blank"
-      .header_box__main__btn
-        %input{type: "submit",class: "send"}
-        = image_tag("icon-search 1.png")
+        = form_with(url: search_items_path, local: true, method: :get, class: "header_box__main__search__keyword__form") do |f|
+          = f.text_field :keyword, value: @search_params, placeholder: " 何かお探しですか？", class: "header_box__main__search__keyword__form"
+          %button{type: "submit", class:'header_box__main__search__keyword__form__btn'} 
+            = icon('fas', 'search',class: 'header_box__main__search__keyword__form__btn__icon')
     .menu
       %ul.left-list
         %li.first

@@ -127,8 +127,6 @@ GEM
     faker (2.10.2)
       i18n (>= 1.6, < 2)
     ffi (1.12.2)
-    font-awesome-rails (4.7.0.5)
-      railties (>= 3.2, < 6.1)
     font-awesome-sass (5.12.0)
       sassc (>= 1.11)
     globalid (0.4.2)
@@ -214,7 +212,7 @@ GEM
     pry-rails (0.3.9)
       pry (>= 0.10.4)
     public_suffix (4.0.3)
-    puma (3.12.2)
+    puma (3.12.3)
     rack (2.2.2)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -373,7 +371,6 @@ DEPENDENCIES
   erb2haml
   factory_bot_rails
   faker
-  font-awesome-rails
   font-awesome-sass
   haml-rails
   jbuilder (~> 2.5)

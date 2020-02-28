@@ -10,7 +10,7 @@
           = link_to image_tag(item.images[0].image.url, class: "pickup-list--image"), item_path(item.id)
           .pickup-list--body
             %h3.name
-            = item.name
+              = item.name
             .details
               %ul
                 %li
@@ -36,7 +36,7 @@
           = link_to image_tag(item.images[0].image.url, class: "pickup-list--image"), item_path(item.id)
           .pickup-list--body
             %h3.name
-            = item.name
+              = item.name
             .details
               %ul
                 %li
@@ -49,8 +49,4 @@
               .items-box_photo__sold
                 .items-box_photo__sold__inner
                   SOLD
-  = link_to new_item_path do
-    .exhibition-btn
-      .exhibition-btn__text
-        出品する
-        .image
+  = render 'buy-btn'
