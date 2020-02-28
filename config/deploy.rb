@@ -26,7 +26,6 @@ set :unicorn_config_path, -> { "#{current_path}/config/unicorn.rb" }
 set :keep_releases, 5
 
 set :linked_files, %w{config/master.key}
-
 # デプロイ処理が終わった後、Unicornを再起動するための記述
 after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
@@ -34,14 +33,14 @@ namespace :deploy do
     invoke 'unicorn:restart'
   end
 
-desc 'upload master.key'
-task :upload do
-  on roles(:app) do |host|
-    if test "[ ! -d #{shared_path}/config ]"
-      execute "mkdir -p #{shared_path}/config"
+  desc 'upload secrets.yml'
+  task :upload do
+    on roles(:app) do |host|
+      if test "[ ! -d #{shared_path}/config ]"
+        execute "mkdir -p #{shared_path}/config"
+      end
+      upload!('config/master.key', "#{shared_path}/config/master.key")
     end
-    upload!('config/master.key', "#{shared_path}/config/master.key")
-  end
 end
 before :starting, 'deploy:upload'
 after :finishing, 'deploy:cleanup'
@@ -51,7 +50,9 @@ set :default_env, {
   rbenv_root: "/usr/local/rbenv",
   path: "/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH",
   BASIC_AUTH_USER: ENV["BASIC_AUTH_USER"],
-  BASIC_AUTH_PASSWORD: ENV["BASIC_AUTH_PASSWORD"]
+  BASIC_AUTH_PASSWORD: ENV["BASIC_AUTH_PASSWORD"],
+  AWS_ACCESS_KEY_ID: ENV["AWS_ACCESS_KEY_ID"],
+  AWS_SECRET_ACCESS_KEY: ENV["AWS_SECRET_ACCESS_KEY"]
 }
 
 append :linked_files, 'config/database.yml', 'config/master.key'
