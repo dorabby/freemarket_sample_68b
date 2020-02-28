@@ -4,6 +4,14 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.includes(:images).order('created_at DESC').limit(3)
+
+  end
+
+  def search
+    @search_params = params[:keyword]
+    @items = Item.search(@search_params).order("created_at DESC").page(params[:page]).per(10)
+    @count = @items.count
+    @items = Item.all.limit(24).order("created_at DESC") if @items.count == 0
   end
 
 
