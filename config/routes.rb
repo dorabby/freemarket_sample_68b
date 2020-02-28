@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   root 'items#index'
 
   resources :items do
+    resources :comments, only: :create
     resources :purchase, only: [:index] do
       collection do
         get 'index', to: 'purchase#index'
