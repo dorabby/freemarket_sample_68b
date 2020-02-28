@@ -6,6 +6,16 @@ class ItemsController < ApplicationController
   end
 
 
+  def show
+    @items = Item.includes(:images)
+    @item = Item.find_by(id: params[:id])
+    @saler = User.find_by(id: @item.saler_id)
+    @brand = Brand.find_by(id: @item.brand_id)
+    @category = Category.find_by(id: @item.category_id)
+    @images = Image.where(item_id: @item.id)
+    @comment = Comment.new
+    @comments = @item.comments.includes(:user)
+  end
 
   def new
     @item = Item.new
