@@ -95,25 +95,13 @@
           = form_with(model: [@item, @comment], local: true) do |f|
             =f.text_area :text, class: "comment", cols: "50", rows: "6", placeholder: "コメントを記入してください\n相手のことを考え丁寧なコメントを心がけましよう。\n不快な言葉遣いなどは利用制限や退会処分となることがあります。"
             = f.submit "投稿", class: "btn"  
-        -# %ul.pagelink
-        -#   %li
-        -#     %span 
-        -#       = link_to "前の商品","#"
-        -#   %li
-        -#     %span 
-        -#       = link_to "後ろの商品","#"
-        -# %span.see_more
-        -#   = link_to "選択したカテゴリをもっと見る","#"
+        %ul.pagelink
+          %li
+            %span 
+              = link_to "前の商品","#"
+          %li
+            %span 
+              = link_to "後ろの商品","#"
+        %span.see_more
+          = link_to "選択したカテゴリをもっと見る","#"
 
-
--# <div class="comments">
--#       <h4>＜コメント一覧＞</h4>
--#       <% if @comments %>
--#         <% @comments.each do |comment| %>
--#           <p>
--#             <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
--#             <%= comment.text %>
--#           </p>
--#         <% end %>
--#       <% end %>
--#     </div>
