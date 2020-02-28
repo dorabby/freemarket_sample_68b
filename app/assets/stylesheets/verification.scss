@@ -272,8 +272,9 @@
     
   }
 
-  .icon_plus_circle:before {
-    content: '\e023';
+  .icon{
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
   }
 
   .buy_register_text {
