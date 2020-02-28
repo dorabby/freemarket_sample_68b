@@ -88,8 +88,8 @@ gem 'dotenv-rails'
 gem 'jquery-rails'
 gem 'carrierwave'
 gem 'mini_magick'
-gem 'ransack'
-gem 'kaminari'
+
+gem 'fog-aws'
 
 group :production do
   gem 'unicorn', '5.4.1'

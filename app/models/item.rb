@@ -4,6 +4,7 @@ class Item < ApplicationRecord
   has_many  :images, dependent: :destroy
   validates :images, presence: true,length: { minimum: 1, maximum: 5}
   accepts_nested_attributes_for :images,allow_destroy: true
+  has_many :comments
 
   belongs_to :brand, optional: true
 

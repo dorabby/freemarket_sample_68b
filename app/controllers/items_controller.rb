@@ -14,11 +14,17 @@ class ItemsController < ApplicationController
     @items = Item.all.limit(24).order("created_at DESC") if @items.count == 0
   end
 
+
+
   def show
-    @saler = @item.saler
-    @brand = @item.brand
-    @category = @item.category
-    @images =  @item.images
+    @items = Item.includes(:images)
+    @item = Item.find_by(id: params[:id])
+    @saler = User.find_by(id: @item.saler_id)
+    @brand = Brand.find_by(id: @item.brand_id)
+    @category = Category.find_by(id: @item.category_id)
+    @images = Image.where(item_id: @item.id)
+    @comment = Comment.new
+    @comments = @item.comments.includes(:user)
   end
 
   def new

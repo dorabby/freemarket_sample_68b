@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   root 'items#index'
 
   resources :items do
+    resources :comments, only: :create
     resources :purchase, only: [:index] do
       collection do
         get 'index', to: 'purchase#index'
@@ -35,7 +36,10 @@ Rails.application.routes.draw do
       post 'delete', to: 'card#delete'
     end
   end
+
   
-  resources :users, only: [:show,:edit,:update,:destroy]
+  resources :users, only: [:show,:edit,:update,:destroy] 
+  resources :addresses, only: [:edit, :update] 
+  
   
 end

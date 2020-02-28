@@ -58,7 +58,7 @@
               .buy_content_inner
                 .clearfix
                   %h3.left 配送先
-                  %a(href="#" class="right buy_user-info_fix") 
+                  = link_to edit_address_path(current_user), class: "right buy_user-info_fix" do
                     %span 変更する
                 %address.buy_user_info_text
                   %p
