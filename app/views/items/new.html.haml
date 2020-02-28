@@ -1,8 +1,8 @@
-.new-header
-  = link_to root_path do
-    = image_tag ("logo.png"),class:"item-img" 
 
-
+.new-header 
+  = link_to root_path do  
+    = image_tag ("logo.png"),class:"item-img"  
+  
 .new-body
   %section.form-box
     = form_with model:@item,local:true do |f|
