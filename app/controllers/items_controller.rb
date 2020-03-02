@@ -4,7 +4,6 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.includes(:images).order('created_at DESC').limit(3)
-
   end
 
   def search
@@ -50,12 +49,18 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to root_path
+      redirect_to root_path,notice:"商品を登録しました"
     else
       redirect_to new_item_path
+      flash[:image] = '1枚以上4枚以下で投稿してください'
+      flash[:name] = '商品名を入力してください'
+      flash[:description] = '商品の説明を入力してください(1000文字以内)'
+      flash[:category] = '全ての欄を選択してください'
+      flash[:choice] = '選択してください'
+      flash[:price] = '300円以上9,999,999円以下で入力してください'
     end
   end
-
+  
 
   def edit
     @grandchild = @item.category
@@ -83,15 +88,15 @@ class ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     if @item.update(item_params)
-      redirect_to root_path,data: {confirm:"登録した商品情報を変更しました"}
+      redirect_to root_path,notice:"登録した商品情報を変更しました"
     else
-      render :edit
+      redirect_to edit_item_path(@item),alert:"必須の項目は全て入力している状態にしてください"
     end
   end
 
   def destroy
     if @item.destroy
-      redirect_to root_path
+      redirect_to root_path,notice:"商品を削除しました"
     else
       redirect_to item_path(@item)
     end
