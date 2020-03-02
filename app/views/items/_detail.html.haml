@@ -67,7 +67,7 @@
           .purchase-box
             - if @item.buyer_id.present? 
               -# %button.purchase-box__btn2(disabled= "")SOLD OUT
-              = link_to "SOLD OUT",root_path,class:"purchase-box__btn"
+              = link_to "SOLD OUT",root_path,class:"purchase-box__btn2"
 
             - if user_signed_in? && current_user.id !=@item.saler_id && @item.buyer_id.blank?
               = link_to "購入画面へ",item_purchase_index_path(@item),class:"purchase-box__btn"
