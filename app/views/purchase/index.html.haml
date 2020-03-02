@@ -1,0 +1,96 @@
+.containar
+  %header.top_header
+    %h1
+      = link_to root_path do
+        = image_tag("logo.png")
+  %main.single_main      
+    %section.l_single_container.buy_item_container   
+      %h2.l_single_head.buy_head 購入内容の確認
+      %section.buy_content.buy_item
+        .buy_content_inner
+          .buy_item_box
+            %h3.buy_item_image
+              = image_tag @images[0].image.url
+            .buy-item-detail
+              %p.buy-item-name
+                = @item.name
+              %p.buy-price-ja.bold
+                %span 
+                = @item.price
+                %span.item-shipping-fee (税込)送料込み
+      %section.buy_content.buy_item          
+        .buy_content_inner
+          %form{:action => "#", :class => "buy_form", :method => "post", :novalidate => "novalidate"}
+            %ul.buy_price_table   
+              %li.buy_price_row.buy_you_pay.bold
+                .buy_price_cell.buy_price_cell_label 支払い金額
+                .buy_price_cell
+                  %span.data_buy_pay
+                  = "¥#{@item.price}"
+            %ul.buy_accordion.buy_not_have_point
+              %li.accrodion_parent
+                .checkbox_default.buy_use_point
+                  %input(type = "checkbox" disabled)/
+                  %i.icon_check
+                  %label ポイントを使用 (所持ポイント: P0)
+            %section.buy_content.buy_user_info
+              .buy_content_inner
+                .clearfix
+                  %h3.left 支払い方法
+                  = link_to card_index_path, class: "right buy_user-info_fix" do
+                    %span 変更する
+                .buy_user_info_text
+                  =icon('fa','plus-circle')  
+                  %span.buy_register_text 
+                    - if @default_card_information.blank?
+                      登録してください
+                      %br/
+                    - else
+                      クレジットカード
+                      %br/
+                      = "**** **** **** " + @default_card_information.last4
+                      %br
+                      - exp_month = @default_card_information.exp_month.to_s
+                      - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+                      = exp_month + " / " + exp_year
+                      %br
+            %section.buy_content.buy_user_info
+              .buy_content_inner
+                .clearfix
+                  %h3.left 配送先
+                  = link_to edit_address_path(current_user), class: "right buy_user-info_fix" do
+                    %span 変更する
+                %address.buy_user_info_text
+                  %p
+                    = "〒#{@address.potalcode}"
+                    %br/ 
+                    = @address.prefectures
+                    %span
+                    = @address.municipalities
+                    %span
+                    = @address.address
+                    %br/
+                    = @address.building_name
+                    %br/
+                    = @user.name
+            %section.buy_content.buy_user_info
+        -if @default_card_information.blank?
+          %button(type="submit" class="btn_default btn_red bold") 購入するにはカードの登録をしてください。
+        -else
+          = form_tag(action: :pay, method: :post) do
+            %button(type="submit" class="btn_default btn_red bold") 購入する   
+
+  .new-footer
+    .fooder-box
+      .fooder-box__teams
+        %ul
+          %li
+          = link_to "プライバシーポリシー"
+          %li
+          = link_to "利用規約"
+          %li
+          = link_to "特定商取引に関する表記"
+    .fooder-logo
+      = link_to root_path do
+        = image_tag("logo.png") 
+      %p © FURIMA, Inc.
