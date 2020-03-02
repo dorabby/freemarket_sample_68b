@@ -1,3 +1,4 @@
+= render 'layouts/notifications' 
 .new-header
   = link_to root_path do
     = image_tag ("logo.png"),class:"item-img" 
@@ -11,7 +12,7 @@
         .form-box__form__upload
           %label.form-box__form__upload 出品画像
           %span.required 必須
-          %p 最大4枚までアップロードできます
+          %p 1枚以上必須、最大4枚までアップロードできます
           #image-box2
             #previews2
               - if @item.persisted?
