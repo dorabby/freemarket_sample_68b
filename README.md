@@ -134,6 +134,8 @@
 
 
 ## likesテーブル
+|Column|Type|Options|
+|------|----|-------|
 |item|references|null: false, foreign_key|
 |user|references|null: false, foreign_key|
 

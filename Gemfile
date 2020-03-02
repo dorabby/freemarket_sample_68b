@@ -91,6 +91,7 @@ gem 'mini_magick'
 gem 'ransack'
 gem 'kaminari'
 gem 'fog-aws'
+gem 'rails-i18n'
 
 group :production do
   gem 'unicorn', '5.4.1'
