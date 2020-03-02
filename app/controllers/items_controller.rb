@@ -7,7 +7,12 @@ class ItemsController < ApplicationController
 
   end
 
-
+  def search
+    @search_params = params[:keyword]
+    @items = Item.search(@search_params).order("created_at DESC").page(params[:page]).per(18)
+    @count = @items.count
+    @items = Item.all.limit(18).order("created_at DESC") if @items.count == 0
+  end
 
 
 
