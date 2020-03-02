@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
-  # has_many  :comments,dependent: :destroy
+  has_many  :comments,dependent: :destroy
   # has_many  :likes,dependent: :destroy
   has_many  :images, dependent: :destroy
   validates :images, presence: true,length: { minimum: 1, maximum: 5}
