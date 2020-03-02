@@ -4,7 +4,7 @@ class PurchaseController < ApplicationController
 
   def index
     @user = current_user
-    @address = Address.where(user_id: current_user.id).first
+    @address = Address.find_by(user_id: current_user.id)
     @item = Item.find_by(id: params[:item_id])
     @images = Image.where(item_id: @item.id)
     card = Card.where(user_id: current_user.id).first
