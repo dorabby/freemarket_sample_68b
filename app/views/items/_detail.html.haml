@@ -78,8 +78,22 @@
               = link_to "編集", edit_item_path(@item.id),class:"item-link__btn__edit"
             - if user_signed_in? && current_user.id ==@item.saler_id && @item.buyer_id.present? 
               = link_to "削除", item_path(@item.id), method: :delete,class:"item-link__btn__delete",data: { confirm: "本当に削除しますか？" }
--# --------下
-
+        .comment-area
+          %h3 
+            %b
+              コメント一覧
+          .comment-area__list
+            - if @comments
+              - @comments.each do |comment|
+                %p
+                  %strong
+                    = "#{comment.user.nick_name}:"
+                  = comment.text
+        .comment-area
+          .comment-contents
+          = form_with(model: [@item, @comment], local: true) do |f|
+            =f.text_area :text, class: "comment", cols: "50", rows: "6", placeholder: "コメントを記入してください\n相手のことを考え丁寧なコメントを心がけましよう。\n不快な言葉遣いなどは利用制限や退会処分となることがあります。"
+            = f.submit "投稿", class: "btn"  
         %ul.pagelink
           %li
             %span 
