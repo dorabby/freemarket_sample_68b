@@ -66,7 +66,8 @@
 
           .purchase-box
             - if @item.buyer_id.present? 
-              = link_to "売り切れました",root_path,class:"purchase-box__btn"
+              %button.purchase-box__btn2(disabled= "")SOLD OUT
+              -# = link_to "売り切れました",root_path,class:"purchase-box__btn"
 
             - if user_signed_in? && current_user.id !=@item.saler_id && @item.buyer_id.blank?
               = link_to "購入画面へ",item_purchase_index_path(@item),class:"purchase-box__btn"

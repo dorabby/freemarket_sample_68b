@@ -50,7 +50,6 @@
 
           li {
             border: 1px solid #EEEEEE;
-
             a {
               padding: 5px;
               display: block;
@@ -59,8 +58,16 @@
               font-size: 14px;
               color: black;
               text-decoration: none;
+              
+              &:hover {
+                background-color: #f5f5f5;
+              }
             }
+
+            
           }
+
+          
 
           h3 {
             display: block;
@@ -80,29 +87,33 @@
       height: 740px;
 
       &__user {
-        height: 260px;
+        height: 220px;
         margin-bottom: 10px;
         background-color: white;
+        background-image: image-url("texture171030IMGL0767_TP_V.jpg");
+        padding: 0.5em 1em;
+        margin: 2em 0;
+        // border: solid 3px #000000;
+        border-color: white;
+        margin: 0 auto;
 
         &__icon {
-          padding: 0.5em 1em;
-          margin: 2em 0;
-          border: solid 3px #000000;
-          border-color: white;
-          margin: 0 auto;
-          background-color: white;
+         margin-top: 60px;
+          // background-color: white;
 
             img {
               display: block;
               margin: 0 auto;
               border-radius: 50%;
-              width:  180px;
-              height: 180px;
+              width:  60px;
+              height: 60px;
             }
 
           &__list {
+            margin-top: 5px;
+            margin-bottom: 10px;
             text-align: center;
-            background-color: white;
+            // background-color: white;
 
 
             a {
@@ -120,20 +131,20 @@
       .icon-box {
         display: flex;
         justify-content: center;
-        margin-left: 20px;
-        background-color: white;
+        // margin-left: 20px;
+        // background-color: white;
 
         &__list {
           padding: 0px 20px;
-          background-color: white;
+          // background-color: white;
 
           a{
           text-decoration: none;
-          background-color: white;
+          // background-color: white;
           color: black;
           }
           p {
-            background-color: white;
+            // background-color: white;
           }
         }
       }
