@@ -72,7 +72,7 @@
                     %br/
                     = @address.building_name
                     %br/
-                    = @user.name
+                    = current_user.name
             %section.buy_content.buy_user_info
         -if @default_card_information.blank?
           %button(type="submit" class="btn_default btn_red bold") 購入するにはカードの登録をしてください。
