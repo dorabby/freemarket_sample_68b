@@ -16,6 +16,8 @@ class ItemsController < ApplicationController
 
 
   def show
+    @user = current_user
+    @user_items = @user.items
     @saler = @item.saler
     @brand = @item.brand
     @category = @item.category

@@ -5,24 +5,9 @@
     .pickup-box__title
       = link_to '新着順' 
     .pickup-lists
-      -@items.each do |item|
-        .pickup-list
-          = link_to image_tag(item.images[0].image.url, class: "pickup-list--image"), item_path(item.id)
-          .pickup-list--body
-            %h3.name
-              = item.name
-            .details
-              %ul
-                %li
-                  = "#{item.price}円"
-                %li
-                  = icon('fa','star',class: 'icon')
-                  0
-              %p (税込)
-            -if item.buyer_id.present? 
-              .items-box_photo__sold
-                .items-box_photo__sold__inner
-                  SOLD
+
+      = render "pickup-list"
+
 
 .pickup
   .pickup-head
@@ -31,22 +16,8 @@
     .pickup-box__title
       = link_to 'アーカイバ'
     .pickup-lists
-      -@items.each do |item|
-        .pickup-list
-          = link_to image_tag(item.images[0].image.url, class: "pickup-list--image"), item_path(item.id)
-          .pickup-list--body
-            %h3.name
-              = item.name
-            .details
-              %ul
-                %li
-                  = "#{item.price}円"
-                %li
-                  = icon('fa','star',class: 'icon')
-                  0
-              %p (税込)
-            -if item.buyer_id.present? 
-              .items-box_photo__sold
-                .items-box_photo__sold__inner
-                  SOLD
+
+      = render "pickup-list"
+
   = render 'buy-btn'
+

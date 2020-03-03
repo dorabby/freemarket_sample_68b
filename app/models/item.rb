@@ -1,11 +1,15 @@
 class Item < ApplicationRecord
   has_many  :comments,dependent: :destroy
   # has_many  :likes,dependent: :destroy
+  belongs_to :user
+  has_many :favorites, dependent: :destroy
+  has_many :favorites_users, through: :favorites, source: :user
   has_many  :images, dependent: :destroy
   validates :images, presence: true,length: { minimum: 1, maximum: 5}
   accepts_nested_attributes_for :images,allow_destroy: true
   has_many :comments
-
+  has_many :favorites, dependent: :destroy
+  has_many :favorited_items, through: :favorites, source: :item
   belongs_to :brand, optional: true
 
   belongs_to :saler, class_name: "User", foreign_key: "saler_id"
@@ -21,8 +25,14 @@ class Item < ApplicationRecord
   validates :price, presence: true,inclusion: 300..9999999
   validates :category_id, presence: true
 
+  def favorited_by?(user)
+    favorites.where(user_id: user.id).exists?
+  end
+  
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
+
+
 
   def self.search(search)
     if search
