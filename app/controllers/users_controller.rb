@@ -1,16 +1,13 @@
 class UsersController < ApplicationController
 
   def index
-    @users = User.all
   end
 
   def show
     @user = current_user
     @item = Item.where(saler_id: params[:id])
     @items = @item.includes(:images).order('created_at DESC')
-    @f_user = User.find(params[:id])
-    @f_items = @user.items
-    @favorite_items = @user.favorite_items
+
   end
 
   def edit

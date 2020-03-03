@@ -16,14 +16,12 @@ class ItemsController < ApplicationController
 
 
   def show
-    @user = current_user
-    @user_items = @user.items
-    @saler = @item.saler
-    @brand = @item.brand
-    @category = @item.category
-    @images =  @item.images
-    @comment = Comment.new
-    @comments = @item.comments.includes(:user)
+    @items = Item.includes(:images)
+    @item = Item.find_by(id: params[:id])
+    @saler = User.find_by(id: @item.saler_id)
+    @brand = Brand.find_by(id: @item.brand_id)
+    @category = Category.find_by(id: @item.category_id)
+    @images = Image.where(item_id: @item.id)
   end
 
   def new

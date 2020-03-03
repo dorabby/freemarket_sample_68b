@@ -18,7 +18,7 @@
           .item-detail__name
             = @item.name           
           %table
-            %tbodyb
+            %tbody
               %tr
                 %th 出品者
                 %td 
@@ -57,7 +57,8 @@
           .option_area
             %ul
               %li.option_area__btn--like
-                = render "favorite"                    
+                %i.fa.fa-ster
+                お気に入り 0
             %ul.option
               %li.option_area__btn--bad
                 %i.fa.fa-flag

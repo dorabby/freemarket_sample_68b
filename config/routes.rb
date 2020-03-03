@@ -10,9 +10,7 @@ Rails.application.routes.draw do
  
   root 'items#index'
 
-
   resources :items do
-    resource :favorites, only: [:index, :create, :destroy]
     resources :comments, only: :create
     resources :purchase, only: [:index] do
       collection do
@@ -47,6 +45,5 @@ Rails.application.routes.draw do
   resources :addresses, only: [:edit, :update] 
   
   resources :users, only: [:show,:edit,:update,:destroy]
-
   
 end
