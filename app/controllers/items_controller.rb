@@ -12,6 +12,10 @@ class ItemsController < ApplicationController
     @brand = Brand.find_by(id: @item.brand_id)
     @category = Category.find_by(id: @item.category_id)
     @images = Image.where(item_id: @item.id)
+    @user = current_user
+    # @user = User.find(params[:id])
+    @user_items = @user.items
+    # @favorite_items = @user.favorite_items
   end
 
   def new

@@ -10,7 +10,9 @@ Rails.application.routes.draw do
  
   root 'items#index'
 
+
   resources :items do
+    resource :favorites, only: [:index, :create, :destroy]
     resources :purchase, only: [:index] do
       collection do
         get 'index', to: 'purchase#index'
@@ -34,5 +36,5 @@ Rails.application.routes.draw do
   end
   
   resources :users, only: [:show,:edit,:update,:destroy]
-  
+
 end

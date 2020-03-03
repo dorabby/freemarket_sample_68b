@@ -28,7 +28,7 @@
           - if @item.buyer_id.present? 
             = link_to "売り切れました",root_path,class:"disabled-button bold"
           %table
-            %tbody
+            %tbodyb
               %tr
                 %th 出品者
 
@@ -67,8 +67,7 @@
           .option_area
             %ul
               %li.option_area__btn--like
-                %i.fa.fa-ster
-                お気に入り 0
+                = render "favorite"                    
             %ul.option
               %li.option_area__btn--bad
                 %i.fa.fa-flag
