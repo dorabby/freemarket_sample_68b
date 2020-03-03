@@ -1,0 +1,21 @@
+.notification {
+  .notice {
+    background-color: $light_blue;
+    color: $white;
+    text-align: center;
+    height: 60px;
+    font-size: 20px;
+    line-height: 60px;
+  }
+  .alert {
+    background-color: $alert_red;
+    color: $white;
+    text-align: center;
+    height: 60px;
+    font-size: 20px;
+    line-height: 60px;
+  }
+}
+.flash-messages{
+  color: red;
+}

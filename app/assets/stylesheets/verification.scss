@@ -272,8 +272,9 @@
     
   }
 
-  .icon_plus_circle:before {
-    content: '\e023';
+  .icon{
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
   }
 
   .buy_register_text {
@@ -330,14 +331,15 @@
 
   .btn_default {
     display: block;
-    width: 100%;
+    width: 300px;
     line-height: 48px;
     font-size: 14px;
     border: 1px solid transparent;
     -webkit-transition: all ease-out .3s;
     transition: all ease-out .3s;
     cursor: pointer;
-    text-align: center;
+    margin-left: 180px;
+    
   }
 
   .btn_red {

@@ -15,7 +15,8 @@ $(document).ready(function(){
                       <img data-index="${index}" src="${url}" class="preview-file-img">
                     </div>
                     <div data-index="${index}" class="js-remove">削除</div>
-                  </div>`;
+                  </div>
+                  <input data-index="${index}" value="0" class="delete_img_${index}" type="hidden" name="item[images_attributes][${index}][_destroy]" id="item_images_attributes_${index}__destroy">`;
     return html;
   }
 
@@ -58,15 +59,13 @@ $(document).ready(function(){
 
   //画像削除した時の処理//
   $('#image-box').on('click', '.js-remove', function() {
-
-    $(this).parent().remove();
-
     var number = Number($(this).data('index'));
-    
+    $(this).parent().remove();
     const file_field_btn = $(`#item_images_attributes_${number}_src`);
     if(file_field_btn) file_field_btn.remove(); 
-
-    var count = $('.preview-file-img').length;
+    $(`.delete_img_${number}`).val('1');
+    
+    var count = $('.preview-file').length;
     var abcde = $('#dropArea')
     if (count == 3) {
       abcde.show();

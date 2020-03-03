@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
-  # has_many  :comments,dependent: :destroy
+  has_many  :comments,dependent: :destroy
   # has_many  :likes,dependent: :destroy
   belongs_to :user
   has_many :favorites, dependent: :destroy
@@ -7,7 +7,9 @@ class Item < ApplicationRecord
   has_many  :images, dependent: :destroy
   validates :images, presence: true,length: { minimum: 1, maximum: 5}
   accepts_nested_attributes_for :images,allow_destroy: true
-
+  has_many :comments
+  has_many :favorites, dependent: :destroy
+  has_many :favorited_items, through: :favorites, source: :item
   belongs_to :brand, optional: true
 
   belongs_to :saler, class_name: "User", foreign_key: "saler_id"
@@ -30,5 +32,14 @@ class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
 
+
+
+  def self.search(search)
+    if search
+      Item.where('name LIKE(?)', "%#{search}%")
+    else
+      Item.all
+    end
+  end
 
 end

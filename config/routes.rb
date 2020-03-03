@@ -13,16 +13,23 @@ Rails.application.routes.draw do
 
   resources :items do
     resource :favorites, only: [:index, :create, :destroy]
+    resources :comments, only: :create
     resources :purchase, only: [:index] do
       collection do
         get 'index', to: 'purchase#index'
         post 'pay', to: 'purchase#pay'
         get 'done', to: 'purchase#done'
+        # get  'purchase/:id'=>  'items#purchase', as: 'purchase'
+        # post 'pay/:id'=>   'items#pay', as: 'pay'#httpメソッドはpostなので注意
+        # get  'done'=>      'items#done', as: 'done'
       end
     end
     collection do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren',defaults: { format: 'json' }
+    end
+    collection do
+      get 'search'
     end
   end
 
@@ -34,7 +41,12 @@ Rails.application.routes.draw do
       post 'delete', to: 'card#delete'
     end
   end
+
+  
+  resources :users, only: [:show,:edit,:update,:destroy] 
+  resources :addresses, only: [:edit, :update] 
   
   resources :users, only: [:show,:edit,:update,:destroy]
 
+  
 end

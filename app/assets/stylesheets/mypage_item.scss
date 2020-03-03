@@ -14,16 +14,18 @@
     }
   }
   .pickup-lists{
-    margin: 30px auto;
-    display: flex;
-    justify-content: space-around;
-    .pickup-list{
-      width: 220px;
+      margin: 30px auto;
+      display: flex;
+      overflow-y: auto;
+      
+    .pickup-listed{
       display: inline-block;
+      padding-right: 10px;
       &--image{
-        background-color: #3ccace;
-        width: 220px;
+        // background-color: #3ccace;
+        width: auto;
         height: 150px;
+        
       }
       &--body{
         background-color: white;
@@ -42,7 +44,8 @@
             justify-content: space-between;align-items: center;
           }
           .fa{
-            font: normal normal normal 14px/1 FontAwesome;
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
             display: inline-block;
             font-size: inherit;
             text-rendering: auto;
@@ -64,7 +67,7 @@
           right: 16px;
           &__inner{
             transform: rotate(-45deg);
-            font-size: 28px;
+            font-size: 18px;
             margin:-35px 0px 0px -55px;
             color: #fff;
             letter-spacing: 2px;

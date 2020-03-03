@@ -3,9 +3,11 @@
     ピックアップカテゴリ
   .pickup-boxs
     .pickup-box__title
-      = link_to '新規投稿登録'
+      = link_to '新着順' 
     .pickup-lists
+
       = render "pickup-list"
+
 
 .pickup
   .pickup-head
@@ -14,5 +16,8 @@
     .pickup-box__title
       = link_to 'アーカイバ'
     .pickup-lists
+
       = render "pickup-list"
+
+  = render 'buy-btn'
 
