@@ -1,7 +1,7 @@
-## freemarket_sample_68b
+# freemarket_sample_68b
 * 誰でも簡単に売り買いが楽しめる機能を再現したフリーマーケットアプリ。ユーザー登録、商品出品、商品購入などの機能が再現されていますが、実際の取引はできません。
 
-# 機能一覧
+## 機能一覧
 * Basic認証
 * ユーザー新規登録
 * ユーザーログイン・ログアウト機能
@@ -15,7 +15,7 @@
 * 出品中と売却済商品表示機能
 * 商品検索機能
 
-# 使用技術一覧
+## 使用技術一覧
 |種別|名称|
 |----|----|
 |開発言語|Ruby(ver 2.5.1)|
@@ -30,8 +30,8 @@
 |クレジットカード管理|PayJP|
 
 
-## 以降DB設計
-# usersテーブル
+# 以降DB設計
+## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
 |nickname| string |null: false|
@@ -44,7 +44,7 @@
 |password|string|null: false|
 |image|text|-------|
 
-# Association
+## Association
 - has_many  :items,dependent: :destroy
 - has_many  :comments,dependent: :destroy
 - has_one  :address,dependent: :destroy
@@ -52,7 +52,7 @@
 
 
 
-# addressesテーブル
+## addressesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |family_name| string |null: false|
@@ -67,24 +67,24 @@
 |tel|string|null: false|
 |user|references|null: false, foreign_key|
 
-# Association
+## Association
 - belongs_to :user
 
 
 
-# cardsテーブル
+## cardsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false|
 |customer_id|string|null: false|
 |card_id|string|null: false|
 
-# Association
+## Association
 - belongs_to :user
 
 
 
-# itemsテーブル
+## itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |saler|references|null: false, foreign_key: { to_table: :users }|
@@ -99,7 +99,7 @@
 |category|references|null: false, foreign_key|
 |brand|references|foreign_key|
 
-# Association
+## Association
 
 - has_many  :comments,dependent: :destroy
 - has_many  :likes,dependent: :destroy
@@ -109,49 +109,49 @@
 - belongs_to :category
 
 
-# brandsテーブル
+## brandsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
 |item|references|null: false,foreign_key|
 
-# Association
+## Association
 
 - has_many  :items
 
 
 
 
-# categoriesテーブル
+## categoriesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
 |ancestry|gem|
 
 
-# Association
+## Association
 - has_many  :items
 
 
 
 
-# imagesテーブル
+## imagesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |image|text|null: false|
 |item|references|null: false, foreign_key|
 
-# Association
+## Association
 - belongs_to :item
 
 
-# commentsテーブル
+## commentsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |comment|text|null:false|
 |item|references|null: false, foreign_key|
 |user|references|null: false, foreign_key|
 
-# Association
+## Association
 - belongs_to :user
 - belongs_to :item
