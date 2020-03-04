@@ -9,6 +9,7 @@
           .search-main__result__box__title
             %h3.new 新着一覧
           = render "item-search"
+          = paginate(@items)
         - if @search_params.present? && @count == 0
           .search-main__result__box__title
             %h3 
@@ -25,6 +26,4 @@
             .search-main__result__box__title__number
               = "検索結果：#{@count}件"
           = render "item-search"
-
-
   = render "shared/footer"

@@ -81,6 +81,18 @@
   }
 }
 
+.pagination{
+  display: flex;
+  justify-content: center;
+  span{
+    padding-right: 10px;
+  }
+  a{
+    text-decoration: none;
+    color: #868686;
+  }
+}
+
 .exhibition-btn{
   position: fixed;
   background-color: #3ccace;
