@@ -5,8 +5,6 @@ class Item < ApplicationRecord
   validates :images, presence: true,length: { minimum: 1, maximum: 5}
   accepts_nested_attributes_for :images,allow_destroy: true
   has_many :comments
-  has_many :favorites, dependent: :destroy
-  has_many :favorited_items, through: :favorites, source: :item
   belongs_to :brand, optional: true
 
   belongs_to :saler, class_name: "User", foreign_key: "saler_id"
