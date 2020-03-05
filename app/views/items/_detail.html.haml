@@ -4,7 +4,7 @@
     .right-content
       .top-content
         .item-detail
-          %h2.item-detail__item_name
+          %h2.item-detail__item-name
             = @item.name
           .item-detail__body
             = render partial: "item_detail"
@@ -15,7 +15,7 @@
             .item-detail__price__detail
               %span （税込）
               %span 送料込み
-          .item-detail__name
+          .item-detail__text
             = @item.description
           %table
             %tbody
